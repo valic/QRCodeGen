@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6C4A754A9D0BD77DDC4CC5B7817CFCEBEA206086",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "166FEDCB552558EF95AB6E79FDB2EF24FE4118B5" : 0,
+    "6C4A754A9D0BD77DDC4CC5B7817CFCEBEA206086" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FF0A3B41-0015-4A0F-8859-59C71D5296AF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "166FEDCB552558EF95AB6E79FDB2EF24FE4118B5" : "QRCodeGen\/QRCodeGen\/",
+    "6C4A754A9D0BD77DDC4CC5B7817CFCEBEA206086" : "QRCodeGen\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "QRCodeGen",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "QRCodeGen.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Zebra42\/QRCodeGen.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "166FEDCB552558EF95AB6E79FDB2EF24FE4118B5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/valic\/QRCodeGen.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C4A754A9D0BD77DDC4CC5B7817CFCEBEA206086"
+    }
+  ]
+}

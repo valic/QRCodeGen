@@ -13,6 +13,8 @@
 		BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A86491C1CA1C800481D21 /* Main.storyboard */; };
 		BB7A864D1C1CA1C800481D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7A864C1C1CA1C800481D21 /* Assets.xcassets */; };
 		BB7A86501C1CA1C800481D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A864E1C1CA1C800481D21 /* LaunchScreen.storyboard */; };
+		D603C37B1C2346C8006537D7 /* ViewControllerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */; };
+		D603C37D1C234709006537D7 /* ViewControllerHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603C37C1C234709006537D7 /* ViewControllerHelp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		BB7A864C1C1CA1C800481D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB7A864F1C1CA1C800481D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB7A86511C1CA1C800481D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTable.swift; sourceTree = "<group>"; };
+		D603C37C1C234709006537D7 /* ViewControllerHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerHelp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				BB7A864C1C1CA1C800481D21 /* Assets.xcassets */,
 				BB7A864E1C1CA1C800481D21 /* LaunchScreen.storyboard */,
 				BB7A86511C1CA1C800481D21 /* Info.plist */,
+				D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */,
+				D603C37C1C234709006537D7 /* ViewControllerHelp.swift */,
 			);
 			path = QRCodeGen;
 			sourceTree = "<group>";
@@ -140,8 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D603C37B1C2346C8006537D7 /* ViewControllerTable.swift in Sources */,
 				BB7A86481C1CA1C800481D21 /* ViewController.swift in Sources */,
 				BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */,
+				D603C37D1C234709006537D7 /* ViewControllerHelp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
