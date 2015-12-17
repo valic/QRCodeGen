@@ -125,7 +125,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let focusPoint = CGPointMake(
             tapPoint.x / self.view.bounds.size.width,
             tapPoint.y / self.view.bounds.size.height)
-        
+        performFocusAnimation(tapPoint)
         do {
             try captureDevice.lockForConfiguration()
             if captureDevice.focusPointOfInterestSupported {
@@ -137,6 +137,10 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
                 captureDevice.focusMode = AVCaptureFocusMode.AutoFocus
             }
+            if captureDevice.exposurePointOfInterestSupported {
+                captureDevice.exposurePointOfInterest = focusPoint
+                captureDevice.exposureMode = AVCaptureExposureMode.AutoExpose
+            }
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
             print(error)
@@ -146,8 +150,34 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         captureDevice.unlockForConfiguration()
         
+        
     }
 
+    private func performFocusAnimation(point: CGPoint) {
+       
+        /*let dot = UIView(frame: CGRectMake(0, 0, 88, 88))
+        dot.backgroundColor = UIColor.blackColor()
+        dot.layer.cornerRadius = 3
+        dot.layer.masksToBounds = true
+        dot.center = point
+        view.addSubview(dot)
+        */
+        
+        var newImgThumb : UIImageView
+        newImgThumb = UIImageView(frame:CGRectMake(0, 0, 100, 100))
+        newImgThumb.contentMode = .ScaleAspectFit
+        newImgThumb.center = point
+        newImgThumb.image = UIImage(named: "indicator.png")!
+        view.addSubview(newImgThumb)
+        
+        UIView.animateWithDuration(0.5, animations: { _ in
+            newImgThumb.alpha = 0
+            }) { _ in
+                newImgThumb.removeFromSuperview()
+        }
+       // view.bringSubviewToFront(dot)
+       // view.bringSubviewToFront(newImgThumb)
+    }
 
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {

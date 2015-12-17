@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0D48E31C22539D00325B87 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0D48E21C22539D00325B87 /* indicator.png */; };
 		BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A86451C1CA1C800481D21 /* AppDelegate.swift */; };
 		BB7A86481C1CA1C800481D21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A86471C1CA1C800481D21 /* ViewController.swift */; };
 		BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A86491C1CA1C800481D21 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB0D48E21C22539D00325B87 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator.png; sourceTree = "<group>"; };
 		BB7A86421C1CA1C800481D21 /* QRCodeGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7A86451C1CA1C800481D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7A86471C1CA1C800481D21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 			children = (
 				BB7A86441C1CA1C800481D21 /* QRCodeGen */,
 				BB7A86431C1CA1C800481D21 /* Products */,
+				BB0D48E21C22539D00325B87 /* indicator.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB7A86501C1CA1C800481D21 /* LaunchScreen.storyboard in Resources */,
+				BB0D48E31C22539D00325B87 /* indicator.png in Resources */,
 				BB7A864D1C1CA1C800481D21 /* Assets.xcassets in Resources */,
 				BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */,
 			);
