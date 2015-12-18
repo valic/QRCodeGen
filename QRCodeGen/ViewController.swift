@@ -11,8 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    @IBOutlet weak var imgQRCode: UIImageView!
-    @IBOutlet weak var messageLabel:UILabel!
+    //@IBOutlet weak var imgQRCode: UIImageView!
     
     var qrcodeImage: CIImage!
     
@@ -22,57 +21,18 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var textQR: String?
     let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
     
-    
     // Added to support different barcodes
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode]
+  
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-
-    }
-    
-    func generationQR (textQR: String) {
-        
-        let data = textQR.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        if data != nil {
-            
-            let filter = CIFilter(name: "CIQRCodeGenerator")
-            
-            filter!.setValue(data, forKey: "inputMessage")
-            filter!.setValue("L", forKey: "inputCorrectionLevel")
-            
-            qrcodeImage = filter!.outputImage
-            
-            displayQRCodeImage()
-        }
-            
-        else {
-            qrcodeImage = nil
-        }
-    }
-    func displayQRCodeImage() {
-        let scaleX = imgQRCode.frame.size.width / qrcodeImage.extent.size.width
-        let scaleY = imgQRCode.frame.size.height / qrcodeImage.extent.size.height
-        
-        let transformedImage = qrcodeImage.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
-        
-        imgQRCode.image = UIImage(CIImage: transformedImage)
-
-    }
-
-    @IBAction func scanQR(sender: AnyObject) {
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
         
-       
+        
         //   captureDevice.exposurePointOfInterest = focusPoint
         //captureDevice.exposureMode = AVCaptureExposureMode.ContinuousAutoExposure
         do {
@@ -100,25 +60,74 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
-        
+            
             
             // Start video capture
             captureSession?.startRunning()
             
             let gesture = UITapGestureRecognizer(target: self, action: "tap:")
-            self.view.addGestureRecognizer(gesture) 
-        
+            self.view.addGestureRecognizer(gesture)
+            
             
             // Move the message label to the top view
-            view.bringSubviewToFront(messageLabel)            
+            // view.bringSubviewToFront(messageLabel)
             
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
             print(error)
             return
         }
+        super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        captureSession?.startRunning()
+        
+    }
+   
+
+    
+    
+    
+  /*  func generationQR (textQR: String) {
+        
+        let data = textQR.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        if data != nil {
+            
+            let filter = CIFilter(name: "CIQRCodeGenerator")
+            
+            filter!.setValue(data, forKey: "inputMessage")
+            filter!.setValue("L", forKey: "inputCorrectionLevel")
+            
+            qrcodeImage = filter!.outputImage
+            
+            displayQRCodeImage()
+        }
+            
+        else {
+            qrcodeImage = nil
+        }
+    }
+    
+    func displayQRCodeImage() {
+        let scaleX = imgQRCode.frame.size.width / qrcodeImage.extent.size.width
+        let scaleY = imgQRCode.frame.size.height / qrcodeImage.extent.size.height
+        
+        let transformedImage = qrcodeImage.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
+        
+        imgQRCode.image = UIImage(CIImage: transformedImage)
+
+    }
+*/
+
 
     func tap(gesture: UITapGestureRecognizer) {
         let tapPoint = gesture.locationInView(self.view)
@@ -185,7 +194,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
-            messageLabel.text = "No barcode/QR code is detected"
+          //  messageLabel.text = "No barcode/QR code is detected"
             return
         }
         
@@ -198,17 +207,16 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if supportedBarCodes.contains(metadataObj.type) {
             //        if metadataObj.type == AVMetadataObjectTypeQRCode {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
+            //let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj)
+            //qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
                
                 textQR = metadataObj.stringValue!
                 
                // print(textQR!)
-                generationQR(textQR!)
-                messageLabel.text = textQR!
-              
+              //  generationQR(textQR!)
+                
                 let myArray = textQR!.componentsSeparatedByString("\n")
                 
                 if myArray.count == 20 {
@@ -237,11 +245,30 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 }
                 
                 captureSession!.stopRunning()
-                captureSession = nil
-                videoPreviewLayer!.removeFromSuperlayer()
+               // captureSession = nil
+                //videoPreviewLayer!.removeFromSuperlayer()
+             
+              //  let destination = storyboard!.instantiateViewControllerWithIdentifier("help") as UIViewController?
+                //navigationController?.pushViewController(destination!, animated: true)
                 
+               // let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+              //  let destination = storyboard.instantiateViewControllerWithIdentifier("help") as! UIViewController
+               // destination.dismissViewControllerAnimated(true, completion: nil)
                 
-               
+               // let vc = self.storyboard?.instantiateViewControllerWithIdentifier("help")
+                
+               // presentViewController(MyPage!, animated: true, completion: nil)
+                //self.dismissViewControllerAnimated(true, completion: nil)
+                
+       // if #available(iOS 8.0, *) {
+      //      self.showViewController(vc!, sender: self)
+     //   } else {
+            // Fallback on earlier versions
+     //   }
+                
+               // if let resultController = storyboard!.instantiateViewControllerWithIdentifier("help") as UIViewController? {
+             //       presentViewController(resultController, animated: true, completion: nil)
+             //   }
             }
         }
     }
