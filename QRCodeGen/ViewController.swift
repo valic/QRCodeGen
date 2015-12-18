@@ -245,31 +245,12 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 }
                 
                 captureSession!.stopRunning()
+                
+                tabBarController?.selectedIndex = 0
                // captureSession = nil
                 //videoPreviewLayer!.removeFromSuperlayer()
              
-              //  let destination = storyboard!.instantiateViewControllerWithIdentifier("help") as UIViewController?
-                //navigationController?.pushViewController(destination!, animated: true)
-                
-               // let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-              //  let destination = storyboard.instantiateViewControllerWithIdentifier("help") as! UIViewController
-               // destination.dismissViewControllerAnimated(true, completion: nil)
-                
-               // let vc = self.storyboard?.instantiateViewControllerWithIdentifier("help")
-                
-               // presentViewController(MyPage!, animated: true, completion: nil)
-                //self.dismissViewControllerAnimated(true, completion: nil)
-                
-       // if #available(iOS 8.0, *) {
-      //      self.showViewController(vc!, sender: self)
-     //   } else {
-            // Fallback on earlier versions
-     //   }
-                
-               // if let resultController = storyboard!.instantiateViewControllerWithIdentifier("help") as UIViewController? {
-             //       presentViewController(resultController, animated: true, completion: nil)
-             //   }
-            }
+                          }
         }
     }
     }
