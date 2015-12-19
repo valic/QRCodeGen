@@ -9,9 +9,6 @@
 import UIKit
 
 class ViewControllerHelp: UIViewController {
-
-    @IBOutlet weak var helpLabel: UILabel!
-    
     
     
     override func viewDidLoad() {

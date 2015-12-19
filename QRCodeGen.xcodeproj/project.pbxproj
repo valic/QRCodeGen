@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB0D48E31C22539D00325B87 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0D48E21C22539D00325B87 /* indicator.png */; };
+		BB1D84641C26090A00F735D5 /* Use Core Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB1D84621C26090A00F735D5 /* Use Core Data.xcdatamodeld */; };
 		BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A86451C1CA1C800481D21 /* AppDelegate.swift */; };
 		BB7A86481C1CA1C800481D21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A86471C1CA1C800481D21 /* ViewController.swift */; };
 		BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A86491C1CA1C800481D21 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		BB0D48E21C22539D00325B87 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator.png; sourceTree = "<group>"; };
+		BB1D84631C26090A00F735D5 /* Use Core Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Use Core Data.xcdatamodel"; sourceTree = "<group>"; };
 		BB7A86421C1CA1C800481D21 /* QRCodeGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7A86451C1CA1C800481D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7A86471C1CA1C800481D21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				BB7A86451C1CA1C800481D21 /* AppDelegate.swift */,
 				BB7A86471C1CA1C800481D21 /* ViewController.swift */,
 				BB7A86491C1CA1C800481D21 /* Main.storyboard */,
+				BB1D84621C26090A00F735D5 /* Use Core Data.xcdatamodeld */,
 				BB7A864C1C1CA1C800481D21 /* Assets.xcassets */,
 				BB7A864E1C1CA1C800481D21 /* LaunchScreen.storyboard */,
 				BB7A86511C1CA1C800481D21 /* Info.plist */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D603C37B1C2346C8006537D7 /* ViewControllerTable.swift in Sources */,
+				BB1D84641C26090A00F735D5 /* Use Core Data.xcdatamodeld in Sources */,
 				BB7A86481C1CA1C800481D21 /* ViewController.swift in Sources */,
 				BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */,
 				D603C37D1C234709006537D7 /* ViewControllerHelp.swift in Sources */,
@@ -316,6 +320,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BB1D84621C26090A00F735D5 /* Use Core Data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB1D84631C26090A00F735D5 /* Use Core Data.xcdatamodel */,
+			);
+			currentVersion = BB1D84631C26090A00F735D5 /* Use Core Data.xcdatamodel */;
+			path = "Use Core Data.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BB7A863A1C1CA1C800481D21 /* Project object */;
 }
