@@ -32,9 +32,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
         
-        
-        //   captureDevice.exposurePointOfInterest = focusPoint
-        //captureDevice.exposureMode = AVCaptureExposureMode.ContinuousAutoExposure
         do {
             
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
@@ -89,6 +86,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         
+        view.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
         
     }
@@ -194,7 +192,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
-          //  messageLabel.text = "No barcode/QR code is detected"
+          print("No barcode/QR code is detected")
             return
         }
         
@@ -207,6 +205,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if supportedBarCodes.contains(metadataObj.type) {
             //        if metadataObj.type == AVMetadataObjectTypeQRCode {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            
             //let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj)
             //qrCodeFrameView?.frame = barCodeObject!.bounds
             
@@ -214,12 +213,12 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                
                 textQR = metadataObj.stringValue!
                 
-               // print(textQR!)
-              //  generationQR(textQR!)
+               
                 
                 let myArray = textQR!.componentsSeparatedByString("\n")
                 
                 if myArray.count == 20 {
+                    
                 let поїзд = myArray[1]
                 let відправлення = myArray[2]
                 let призначення = myArray[3]
@@ -245,10 +244,10 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 }
                 
                 captureSession!.stopRunning()
+                videoPreviewLayer!.removeFromSuperlayer()
                 
+                // перейти на первый tab
                 tabBarController?.selectedIndex = 0
-               // captureSession = nil
-                //videoPreviewLayer!.removeFromSuperlayer()
              
                           }
         }
