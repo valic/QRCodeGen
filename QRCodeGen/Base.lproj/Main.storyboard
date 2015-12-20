@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--help-->
+        <!--info-->
         <scene sceneID="2kV-Fr-J8b">
             <objects>
                 <viewController storyboardIdentifier="help" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KzD-DA-94Z" customClass="ViewControllerHelp" customModule="QRCodeGen" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <constraint firstItem="4eH-TK-0zR" firstAttribute="centerY" secondItem="S7g-RV-AGF" secondAttribute="centerY" id="gvD-Hh-Jgo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="help" image="Help-32.png" selectedImage="Help-32.png" id="RoZ-gc-Nqy" userLabel="help"/>
+                    <tabBarItem key="tabBarItem" title="info" image="info31.png" selectedImage="info31.png" id="RoZ-gc-Nqy" userLabel="help"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="helpLabel" destination="4eH-TK-0zR" id="368-Um-o8K"/>
@@ -38,9 +38,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bc9-8Q-Yf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="957"/>
+            <point key="canvasLocation" x="316.5" y="816"/>
         </scene>
-        <!--main-->
+        <!--tickets-->
         <scene sceneID="VxO-Ha-GFF">
             <objects>
                 <viewController id="XBk-sk-dCy" customClass="ViewControllerTable" customModule="QRCodeGen" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="main" image="Two Tickets-32.png" selectedImage="Two Tickets-32.png" id="1r6-Rk-2uU" userLabel="main"/>
+                    <tabBarItem key="tabBarItem" title="tickets" image="park2.png" selectedImage="park2.png" id="1r6-Rk-2uU" userLabel="main"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="ticketTable" destination="Spq-O5-BHG" id="DSc-4o-efK"/>
@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-N6-gmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="-412"/>
+            <point key="canvasLocation" x="316.5" y="-118.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nzt-gj-GYi">
@@ -101,17 +101,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="scan" image="Scan Stock-32.png" selectedImage="Scan Stock-32.png" id="G3u-E0-M5Q"/>
+                    <tabBarItem key="tabBarItem" title="scan" image="smartphone233.png" selectedImage="smartphone233.png" id="G3u-E0-M5Q"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="239"/>
+            <point key="canvasLocation" x="316.5" y="352.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Help-32.png" width="32" height="32"/>
-        <image name="Scan Stock-32.png" width="32" height="32"/>
-        <image name="Two Tickets-32.png" width="32" height="32"/>
+        <image name="info31.png" width="32" height="32"/>
+        <image name="park2.png" width="32" height="32"/>
+        <image name="smartphone233.png" width="32" height="32"/>
     </resources>
 </document>
