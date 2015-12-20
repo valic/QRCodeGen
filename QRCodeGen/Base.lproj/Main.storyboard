@@ -33,7 +33,7 @@
                     <tabBarItem key="tabBarItem" title="help" image="Help-32.png" selectedImage="Help-32.png" id="RoZ-gc-Nqy" userLabel="help"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="helpLabel" destination="4eH-TK-0zR" id="Sba-wP-p64"/>
+                        <outlet property="helpLabel" destination="4eH-TK-0zR" id="368-Um-o8K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bc9-8Q-Yf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
