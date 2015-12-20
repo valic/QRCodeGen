@@ -16,6 +16,9 @@ class ViewControllerHelp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        helpLabel.text = "to scan the qr code, press Scan"
+        
+        
      
         
         // Do any additional setup after loading the view.

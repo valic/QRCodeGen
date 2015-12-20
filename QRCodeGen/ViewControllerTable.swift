@@ -35,14 +35,13 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "mycell")
         cell.textLabel!.text = foodNames[indexPath.row]
         
-        let image : UIImage = UIImage(named: foodImages[indexPath.row])!
-        cell.imageView!.image = image
+        //let image : UIImage = UIImage(named: foodImages[indexPath.row])!
+        //cell.imageView!.image = image
         
         return cell
     }
