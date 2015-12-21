@@ -8,10 +8,13 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
+//@objc(Tickets)
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     //@IBOutlet weak var imgQRCode: UIImageView!
+    
     
     var qrcodeImage: CIImage!
     
@@ -24,10 +27,13 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     // Added to support different barcodes
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode]
   
+    //var managedContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.managedObjectContext
+        
+        
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
@@ -212,8 +218,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             if metadataObj.stringValue != nil {
                
                 textQR = metadataObj.stringValue!
-                
-               
+                if textQR != nil {
+                saveCoreData(textQR!)
+                }
                 
                 let myArray = textQR!.componentsSeparatedByString("\n")
                 
@@ -252,7 +259,31 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                           }
         }
     }
+
+    func saveCoreData(stirng : String) {
+        
+        
+        // create an instance of our managedObjectContext
+        let moc = DataController().managedObjectContext
+        
+        // we set up our entity by selecting the entity and context that we're targeting
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("Tickets", inManagedObjectContext: moc) //as! Tickets
+        
+        // add our data
+        entity.setValue(stirng, forKey: "string")
+
+        
+        // we save our entity
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
     }
+       
+
+    }
+    
 
 
 

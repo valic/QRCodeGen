@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
-    <entity name="Tickets" syncable="YES">
+    <entity name="Tickets" representedClassName="Tickets" syncable="YES">
         <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tickets" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Tickets" positionX="-54" positionY="-9" width="128" height="60"/>
     </elements>
 </model>
