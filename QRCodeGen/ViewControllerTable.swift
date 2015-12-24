@@ -17,7 +17,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetch()
+      //  fetch()
         
         ticketTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -31,8 +31,8 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        
-     //  fetchingFromCoreData ()
+        fetch()
+        //  fetchingFromCoreData ()
         
     }
     
@@ -79,7 +79,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         
         do {
             let fetchedPerson = try moc.executeFetchRequest(personFetch) //as! [Person]
-            print(fetchedPerson.first!.string!)
+           // print(fetchedPerson.first!.string!)
             
             for item in fetchedPerson {
                 print(item.string!)

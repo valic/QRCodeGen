@@ -91,7 +91,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        
+        // clearCoreData("Tickets")
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
         
@@ -216,7 +216,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             //qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-               
+               clearCoreData("Tickets")
                 textQR = metadataObj.stringValue!
                 if textQR != nil {
                 saveCoreData(textQR!)
@@ -236,7 +236,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 let прізвищеІмя = myArray[9]
                 let вартість = myArray[12]
                 let ticketID = myArray[15]
-                
+                /*
                 print(поїзд)
                 print(відправлення)
                 print(призначення)
@@ -247,7 +247,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 print(прізвищеІмя)
                 print(вартість)
                 print(ticketID)
-                
+                */
                 }
                 
                 captureSession!.stopRunning()
@@ -261,7 +261,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
 
     func saveCoreData(stirng : String) {
-        
+        print("e")
         
         // create an instance of our managedObjectContext
         let moc = DataController().managedObjectContext
@@ -278,6 +278,24 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             try moc.save()
         } catch {
             fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+     func clearCoreData(entity:String) {
+        let moc = DataController().managedObjectContext
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = NSEntityDescription.entityForName(entity, inManagedObjectContext: moc)
+        fetchRequest.includesPropertyValues = false
+        do {
+            if let results = try moc.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                for result in results {
+                    moc.deleteObject(result)
+                }
+                
+                try moc.save()
+            }
+        } catch {
+         print("failed to clear core data")
         }
     }
        
