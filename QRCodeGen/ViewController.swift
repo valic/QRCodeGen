@@ -10,13 +10,8 @@ import UIKit
 import AVFoundation
 import CoreData
 
-//@objc(Tickets)
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
-    //@IBOutlet weak var imgQRCode: UIImageView!
-    
-    
-    var qrcodeImage: CIImage!
+ //   var qrcodeImage: CIImage!
     
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -25,15 +20,12 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
     
     // Added to support different barcodes
-    let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode]
-  
-    //var managedContext: NSManagedObjectContext!
+    let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code]
+    //[AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode]
     
     override func viewDidLoad() {
         
         // Do any additional setup after loading the view, typically from a nib.managedObjectContext
-        
-        
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
@@ -91,7 +83,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        // clearCoreData("Tickets")
+       //  clearCoreData("Tickets")
+        
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
         
@@ -168,14 +161,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     private func performFocusAnimation(point: CGPoint) {
        
-        /*let dot = UIView(frame: CGRectMake(0, 0, 88, 88))
-        dot.backgroundColor = UIColor.blackColor()
-        dot.layer.cornerRadius = 3
-        dot.layer.masksToBounds = true
-        dot.center = point
-        view.addSubview(dot)
-        */
-        
         var newImgThumb : UIImageView
         newImgThumb = UIImageView(frame:CGRectMake(0, 0, 100, 100))
         newImgThumb.contentMode = .ScaleAspectFit
@@ -209,79 +194,100 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Instead of hardcoding the AVMetadataObjectTypeQRCode, we check if the type
         // can be found in the array of supported bar codes.
         if supportedBarCodes.contains(metadataObj.type) {
-            //        if metadataObj.type == AVMetadataObjectTypeQRCode {
-            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
-            
-            //let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj)
-            //qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-               clearCoreData("Tickets")
                 textQR = metadataObj.stringValue!
-                if textQR != nil {
-                saveCoreData(textQR!)
-                }
                 
-                let myArray = textQR!.componentsSeparatedByString("\n")
-                
-                if myArray.count == 20 {
+                if let textQR = textQR {
+                    print(textQR)
                     
-                let поїзд = myArray[1]
-                let відправлення = myArray[2]
-                let призначення = myArray[3]
-                let датаЧасВідпр = myArray[4]
-                let датаЧасПриб = myArray[5]
-                let вагон = myArray[6]
-                let місце = myArray[7]
-                let прізвищеІмя = myArray[9]
-                let вартість = myArray[12]
-                let ticketID = myArray[15]
-                /*
-                print(поїзд)
-                print(відправлення)
-                print(призначення)
-                print(датаЧасВідпр)
-                print(датаЧасПриб)
-                print(вагон)
-                print(місце)
-                print(прізвищеІмя)
-                print(вартість)
-                print(ticketID)
-                */
+                    let arrayScanCode = textQR.componentsSeparatedByString("\n")
+                   
+                    if arrayScanCode.count == 20 /*&& arrayScanCode[15] == arrayScanCode[19] */{
+                        
+                        // create an instance of our managedObjectContext
+                        let context = DataController().managedObjectContext
+                        let request = NSFetchRequest(entityName: "Tickets")
+                        
+                        // we set up our entity by selecting the entity and context that we're targeting
+                        let entity = NSEntityDescription.insertNewObjectForEntityForName("Tickets", inManagedObjectContext: context) as! Tickets
+
+                        let predicate = NSPredicate(format: "ticketID == %@", arrayScanCode[15])
+                        request.predicate = predicate
+                        do {
+                            let results = try context.executeFetchRequest(request) as! [Tickets]
+                            
+                            
+                            if (results.count > 0) {
+                                for result in results {
+                                    self.captureSession!.stopRunning()
+                                    print(result.ticketID!)
+                                    alertCaptureSession("Билет уже добавлен")
+                                    
+                                }
+                            } else {
+                                print("билета нету в Core Data, добавляем")
+                                
+                                captureSession!.stopRunning()
+                                videoPreviewLayer!.removeFromSuperlayer()
+                                
+                                entity.setValue(textQR, forKey: "stringTicket") // сохраняем всю строку, для создания QR кода
+                                
+                                
+                                entity.setValue(arrayScanCode[1], forKey: "train") // поїзд
+                                entity.setValue(arrayScanCode[2], forKey: "departure") // відправлення
+                                entity.setValue(arrayScanCode[3], forKey: "destination") // призначення
+                                entity.setValue(stringToDate(arrayScanCode[4]), forKey: "dateTimeDep") // датаЧасВідпр
+                                entity.setValue(stringToDate(arrayScanCode[5]), forKey: "dateTimeDep") // датаЧасПриб
+                                entity.setValue(arrayScanCode[6], forKey: "coach") // вагон
+                                entity.setValue(arrayScanCode[7], forKey: "seat") // місце
+                                entity.setValue(arrayScanCode[9], forKey: "surnameAndName") // прізвищеІмя
+                                entity.setValue(NSString(string: arrayScanCode[12]).floatValue, forKey: "cost") // вартість
+                                entity.setValue(arrayScanCode[15], forKey: "ticketID")
+                                
+                                // перейти на первый tab
+                                tabBarController?.selectedIndex = 0
+                                
+                                // we save our entity
+                                do {
+                                    try context.save()
+                                } catch {
+                                    fatalError("Failure to save context: \(error)")
+                                }
+                                
+                            }
+                        } catch let error as NSError {
+                            // failure
+                            print("Fetch failed: \(error.localizedDescription)")
+                        }
+
+                        
+                    }
+                    else{
+                        if arrayScanCode.count == 1 && arrayScanCode[0].characters.count == 19 {
+                            
+                             self.alertCaptureSession("возможно шрих код")
+                            print(arrayScanCode[0]) //19
+                        }
+                        else {
+                             self.alertCaptureSession("в QR code нету билета")
+                        }
+                       
+                    }
                 }
-                
-                captureSession!.stopRunning()
-                videoPreviewLayer!.removeFromSuperlayer()
+              //  captureSession!.stopRunning()
+              //  videoPreviewLayer!.removeFromSuperlayer()
                 
                 // перейти на первый tab
-                tabBarController?.selectedIndex = 0
+             //   tabBarController?.selectedIndex = 0
              
-                          }
+            }
         }
     }
 
-    func saveCoreData(stirng : String) {
-        print("e")
-        
-        // create an instance of our managedObjectContext
-        let moc = DataController().managedObjectContext
-        
-        // we set up our entity by selecting the entity and context that we're targeting
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("Tickets", inManagedObjectContext: moc) //as! Tickets
-        
-        // add our data
-        entity.setValue(stirng, forKey: "string")
 
-        
-        // we save our entity
-        do {
-            try moc.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-    }
     
-     func clearCoreData(entity:String) {
+    func clearCoreData(entity:String) {
         let moc = DataController().managedObjectContext
         let fetchRequest = NSFetchRequest()
         fetchRequest.entity = NSEntityDescription.entityForName(entity, inManagedObjectContext: moc)
@@ -298,7 +304,39 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
          print("failed to clear core data")
         }
     }
-       
+    
+    func stringToDate (stringData: String) -> NSDate  {
+        
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateFormat  = "dd.MM HH:mm" //21.11 20:01
+        dateFormatter.timeZone = NSTimeZone(name: "Europe/Kiev")
+        dateFormatter.defaultDate = NSDate()
+        let date = dateFormatter.dateFromString(stringData)
+        return date!
+        //dateFormatter.dateFormat = "dd-MM HH:mm"
+       // return dateFormatter.stringFromDate(date!)
+    }
+    
+    func alertCaptureSession(messageText: String)
+    {
+        //self.captureSession!.stopRunning()
+        
+        if #available(iOS 8.0, *) {
+            let alertController = UIAlertController(title: title, message: messageText, preferredStyle:UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+                { action -> Void in
+                    // Put your code here
+                    self.captureSession!.startRunning()
+                })
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        
+        
+    }
 
     }
     

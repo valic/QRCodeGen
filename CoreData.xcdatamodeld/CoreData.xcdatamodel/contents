@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="Tickets" representedClassName="Tickets" syncable="YES">
-        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coach" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dateTimeDep" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateTimeDes" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="departure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stringTicket" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surnameAndName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticketID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="train" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tickets" positionX="-54" positionY="-9" width="128" height="60"/>
+        <element name="Tickets" positionX="-54" positionY="-9" width="128" height="210"/>
     </elements>
 </model>

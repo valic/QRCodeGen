@@ -2,7 +2,7 @@
 //  Tickets+CoreDataProperties.swift
 //  QRCodeGen
 //
-//  Created by Мялин Валентин on 12/21/15.
+//  Created by Мялин Валентин on 12/27/15.
 //  Copyright © 2015 MialinVV. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,6 +14,16 @@ import CoreData
 
 extension Tickets {
 
-    //@NSManaged var string: String?
+    @NSManaged var train: String?
+    @NSManaged var departure: String?
+    @NSManaged var destination: String?
+    @NSManaged var dateTimeDep: NSDate?
+    @NSManaged var dateTimeDes: NSDate?
+    @NSManaged var coach: String?
+    @NSManaged var seat: String?
+    @NSManaged var surnameAndName: String?
+    @NSManaged var cost: NSNumber?
+    @NSManaged var ticketID: String?
+    @NSManaged var stringTicket: String?
 
 }

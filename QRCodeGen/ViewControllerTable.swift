@@ -74,19 +74,35 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     */
     
     func fetch() {
-        let moc = DataController().managedObjectContext
-        let personFetch = NSFetchRequest(entityName: "Tickets")
-        
+        let context = DataController().managedObjectContext
+        let request = NSFetchRequest(entityName: "Tickets")
+        // Create a sort descriptor object that sorts on the "title"
+        // property of the Core Data object
+        //let sortDescriptor = NSSortDescriptor(key: "seat", ascending: true)
+        // Set the list of sort descriptors in the fetch request,
+        // so it includes the sort descriptor
+       // request.sortDescriptors = [sortDescriptor]
+       // let predicate = NSPredicate(format: "seat == %@", "027 Повний")
+       // request.predicate = predicate
         do {
-            let fetchedPerson = try moc.executeFetchRequest(personFetch) //as! [Person]
-           // print(fetchedPerson.first!.string!)
+            let results = try context.executeFetchRequest(request) as! [Tickets]
+        
             
-            for item in fetchedPerson {
-                print(item.string!)
+            if (results.count > 0) {
+                for result in results {
+                    print(result.ticketID!)
+                }
+            } else {
+                print("No Users")
             }
-            
-        } catch {
-            fatalError("Failed to fetch person: \(error)")
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
         }
-    }
+        
+
 }
+
+    }
+    
+
