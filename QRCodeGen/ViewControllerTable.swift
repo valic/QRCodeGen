@@ -17,7 +17,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  fetch()
+      // fetch()
         
         ticketTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -74,8 +74,9 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     */
     
     func fetch() {
-        let context = DataController().managedObjectContext
+     //   let context = DataController().managedObjectContext
         let request = NSFetchRequest(entityName: "Tickets")
+        
         // Create a sort descriptor object that sorts on the "title"
         // property of the Core Data object
         //let sortDescriptor = NSSortDescriptor(key: "seat", ascending: true)
@@ -85,16 +86,18 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
        // let predicate = NSPredicate(format: "seat == %@", "027 Повний")
        // request.predicate = predicate
         do {
-            let results = try context.executeFetchRequest(request) as! [Tickets]
-        
+            let results = try DataController().managedObjectContext.executeFetchRequest(request) as! [Tickets]
+            
             
             if (results.count > 0) {
                 for result in results {
                     print(result.ticketID!)
                 }
             } else {
-                print("No Users")
+                print("No Data")
             }
+            
+        
         } catch let error as NSError {
             // failure
             print("Fetch failed: \(error.localizedDescription)")
@@ -102,6 +105,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         
 
 }
+        
 
     }
     

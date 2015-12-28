@@ -29,9 +29,90 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
-        
-        do {
+        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        if status == AVAuthorizationStatus.Authorized {
+            // Show camera
+            print("доступ есть")
+            load ()
             
+        } else if status == AVAuthorizationStatus.NotDetermined {
+            // Request permission
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted) -> Void in
+                if granted {
+                    // Show camera
+                    print("пользователь дал доступ")
+                    self.load ()
+                }
+            })
+        } else {
+            print("нет доступа к камере")
+            // User rejected permission. Ask user to switch it on in the Settings app manually
+        }
+        
+        
+        
+        super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+       //  clearCoreData("Tickets")
+       /* if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            var imagePicker = UIImagePickerController()
+           // imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.allowsEditing = false
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        */
+        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        if status == AVAuthorizationStatus.Authorized {
+            // Show camera
+            
+        } else if status == AVAuthorizationStatus.NotDetermined {
+            // Request permission
+            print("доступ есть")
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted) -> Void in
+                if granted {
+                    // Show camera
+                    print("пользователь дал доступ")
+                    self.load ()
+                }
+            })
+        } else {
+            print("нет доступа к камере")
+            // User rejected permission. Ask user to switch it on in the Settings app manually
+            if #available(iOS 8.0, *) {
+              
+            switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+               
+            case .OrderedSame, .OrderedDescending: UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                // prefs:root=General&path=ManagedConfigurationList
+            case .OrderedAscending: break
+                //Do Nothing.
+            }
+            } else {
+                // Fallback on earlier versions
+            }
+            
+        }
+        
+        if captureSession != nil && videoPreviewLayer != nil{
+        captureSession?.startRunning()
+        view.layer.addSublayer(videoPreviewLayer!)
+        }
+        
+    }
+   
+
+    func load () {
+        do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
             
@@ -72,35 +153,16 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             print(error)
             return
         }
-        super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
 
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated);
-       //  clearCoreData("Tickets")
-        
-        view.layer.addSublayer(videoPreviewLayer!)
-        captureSession?.startRunning()
-        
-    }
-   
-
-    
-    
-    
   /*  func generationQR (textQR: String) {
-        
+
         let data = textQR.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         if data != nil {
-            
+
             let filter = CIFilter(name: "CIQRCodeGenerator")
-            
+
             filter!.setValue(data, forKey: "inputMessage")
             filter!.setValue("L", forKey: "inputCorrectionLevel")
             
@@ -219,12 +281,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                             
                             if (results.count > 0) {
-                                for result in results {
-                                    self.captureSession!.stopRunning()
-                                    print(result.ticketID!)
-                                    alertCaptureSession("Билет уже добавлен")
+                               
+                                self.captureSession!.stopRunning()
+                                alertCaptureSession("Билет уже добавлен")
                                     
-                                }
+                                
                             } else {
                                 print("билета нету в Core Data, добавляем")
                                 
@@ -245,8 +306,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                                 entity.setValue(NSString(string: arrayScanCode[12]).floatValue, forKey: "cost") // вартість
                                 entity.setValue(arrayScanCode[15], forKey: "ticketID")
                                 
-                                // перейти на первый tab
-                                tabBarController?.selectedIndex = 0
+                               
                                 
                                 // we save our entity
                                 do {
@@ -254,6 +314,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                                 } catch {
                                     fatalError("Failure to save context: \(error)")
                                 }
+                                
+                                // перейти на первый tab
+                                tabBarController?.selectedIndex = 0
                                 
                             }
                         } catch let error as NSError {
@@ -337,6 +400,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         
     }
+    
+
 
     }
     
