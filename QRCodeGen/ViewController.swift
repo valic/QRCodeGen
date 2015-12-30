@@ -26,7 +26,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         
         // Do any additional setup after loading the view, typically from a nib.managedObjectContext
-        print(isVisible())
        
         super.viewDidLoad()
     }
@@ -45,7 +44,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-print(isVisible())
+
         let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
         if status == AVAuthorizationStatus.Authorized {
             // Show camera
@@ -217,9 +216,8 @@ print(isVisible())
 
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-        print(isVisible())
         
-        if isVisible() {
+  
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
@@ -324,7 +322,7 @@ print(isVisible())
              
             }
         }
-        }
+        
     else{
     print("del")
     deleteCaptureSession ()
@@ -376,19 +374,10 @@ print(isVisible())
             //self.captureSession!.startRunning()
             self.presentViewController(alertController, animated: true, completion: nil)
     }
-    func isVisible() -> Bool {
-        if isViewLoaded() && (view.window != nil) {
-            return true
-        } else {
-            return false
-        }
-    }
+
+    
+    
 }
-
-
-    
-    
-
 
 
 
