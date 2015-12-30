@@ -26,92 +26,59 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         
         // Do any additional setup after loading the view, typically from a nib.managedObjectContext
-        
-        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
-        // as the media type parameter.
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        if status == AVAuthorizationStatus.Authorized {
-            // Show camera
-            print("доступ есть")
-            load ()
-            
-        } else if status == AVAuthorizationStatus.NotDetermined {
-            // Request permission
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted) -> Void in
-                if granted {
-                    // Show camera
-                    print("пользователь дал доступ")
-                    self.load ()
-                }
-            })
-        } else {
-            print("нет доступа к камере")
-            // User rejected permission. Ask user to switch it on in the Settings app manually
-        }
-        
-        
-        
+        print(isVisible())
+       
         super.viewDidLoad()
     }
+    
+//    deinit {
+        // perform the deinitialization
+        
+  //  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
 
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-       //  clearCoreData("Tickets")
-       /* if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            var imagePicker = UIImagePickerController()
-           // imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
-            imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated: true, completion: nil)
-        }
-        */
+print(isVisible())
         let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
         if status == AVAuthorizationStatus.Authorized {
             // Show camera
-            
+            self.initializationCaptureSession ()
         } else if status == AVAuthorizationStatus.NotDetermined {
             // Request permission
-            print("доступ есть")
+            print("Request permission")
+
             AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted) -> Void in
                 if granted {
                     // Show camera
-                    print("пользователь дал доступ")
-                    self.load ()
+                    self.initializationCaptureSession ()
                 }
             })
         } else {
             print("нет доступа к камере")
             // User rejected permission. Ask user to switch it on in the Settings app manually
-            if #available(iOS 8.0, *) {
-              
-            switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
-               
-            case .OrderedSame, .OrderedDescending: UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-                // prefs:root=General&path=ManagedConfigurationList
-            case .OrderedAscending: break
-                //Do Nothing.
-            }
-            } else {
-                // Fallback on earlier versions
-            }
+            //open the settings to allow the user to select if they want to allow for location settings.
+            
+            let alert = UIAlertController(title: "Невозможно получить доступ к камере", message: "Сканеру требуется доступ к вашей камере для сканирования кодов. Перейдите в настройки приватности вашего устройства для включения камеры.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Default, handler:nil))
+            alert.addAction(UIAlertAction(title: "Настройки", style: UIAlertActionStyle.Default, handler: {
+                (alert: UIAlertAction!) in
+                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            }))
+                
+            self.presentViewController(alert, animated: true, completion: nil)
             
         }
-        
-        if captureSession != nil && videoPreviewLayer != nil{
-        captureSession?.startRunning()
-        view.layer.addSublayer(videoPreviewLayer!)
-        }
-        
     }
    
 
-    func load () {
+    func initializationCaptureSession () {
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
@@ -155,6 +122,15 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
 
+    func deleteCaptureSession () {
+        
+        if captureSession != nil {
+            self.captureSession!.stopRunning()
+            captureSession = nil
+        }
+        
+    
+    }
 
   /*  func generationQR (textQR: String) {
 
@@ -241,7 +217,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+        print(isVisible())
         
+        if isVisible() {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
@@ -282,14 +260,14 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                             if (results.count > 0) {
                                
-                                self.captureSession!.stopRunning()
+                                self.deleteCaptureSession ()
                                 alertCaptureSession("Билет уже добавлен")
                                     
                                 
                             } else {
                                 print("билета нету в Core Data, добавляем")
                                 
-                                captureSession!.stopRunning()
+                                deleteCaptureSession ()
                                 videoPreviewLayer!.removeFromSuperlayer()
                                 
                                 entity.setValue(textQR, forKey: "stringTicket") // сохраняем всю строку, для создания QR кода
@@ -346,6 +324,12 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
              
             }
         }
+        }
+    else{
+    print("del")
+    deleteCaptureSession ()
+    videoPreviewLayer!.removeFromSuperlayer()
+    }
     }
 
 
@@ -383,27 +367,26 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     func alertCaptureSession(messageText: String)
     {
-        //self.captureSession!.stopRunning()
-        
-        if #available(iOS 8.0, *) {
             let alertController = UIAlertController(title: title, message: messageText, preferredStyle:UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
                 { action -> Void in
                     // Put your code here
-                    self.captureSession!.startRunning()
+                    self.initializationCaptureSession()
                 })
+            //self.captureSession!.startRunning()
             self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    func isVisible() -> Bool {
+        if isViewLoaded() && (view.window != nil) {
+            return true
         } else {
-            // Fallback on earlier versions
+            return false
         }
-        
-        
-        
     }
+}
+
+
     
-
-
-    }
     
 
 

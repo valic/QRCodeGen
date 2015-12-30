@@ -11,15 +11,17 @@ import CoreData
 
 class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    @IBOutlet weak var ticketTable: UITableView!
-    
+    @IBOutlet var tableView: UITableView!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      // fetch()
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        ticketTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+      // fetch()
+
         
         // Do any additional setup after loading the view.
     }
@@ -35,43 +37,39 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         //  fetchingFromCoreData ()
         
     }
-    
+    let textCellIdentifier = "TextCell"
     var foodNames: [String] = ["Food1","Food2","Food3","Food4","Food5","Food6","Food7","Food8"];
     var foodImages: [String] = ["image1", "image2", "image3","image4","image5","image6","image7","image8"];
     
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        print(foodNames.count)
+    // MARK:  UITextFieldDelegate Methods
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodNames.count
     }
     
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "mycell")
-        cell.textLabel!.text = foodNames[indexPath.row]
-        tableView.reloadData()
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
-        //let image : UIImage = UIImage(named: foodImages[indexPath.row])!
-        //cell.imageView!.image = image
+        //let row = indexPath.row
+        cell.textLabel?.text = foodNames[indexPath.row]
+        
+        //        cell.textLabel!.text = ticketsList[indexPath.item]
         
         return cell
     }
     
+    // MARK:  UITableViewDelegate Methods
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        let row = indexPath.row
+        print(foodNames[row])
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func fetch() {
      //   let context = DataController().managedObjectContext
