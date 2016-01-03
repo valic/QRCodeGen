@@ -135,6 +135,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfZ-4s-8TF">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="6pE-de-LTg">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="MkD-yi-PQ1">
+                                            <connections>
+                                                <segue destination="XBk-sk-dCy" kind="show" id="L1E-MG-PY5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -146,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0w-7Z-fQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="-22"/>
+            <point key="canvasLocation" x="766" y="-134"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nzt-gj-GYi">
@@ -193,4 +205,7 @@
         <image name="park2.png" width="32" height="32"/>
         <image name="smartphone233.png" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="L1E-MG-PY5"/>
+    </inferredMetricsTieBreakers>
 </document>
