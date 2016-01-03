@@ -23,6 +23,7 @@
 		BB8964541C26E9B900F4F707 /* smartphone233.png in Resources */ = {isa = PBXBuildFile; fileRef = BB89644F1C26E9B900F4F707 /* smartphone233.png */; };
 		D603C37B1C2346C8006537D7 /* ViewControllerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */; };
 		D603C37D1C234709006537D7 /* ViewControllerHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603C37C1C234709006537D7 /* ViewControllerHelp.swift */; };
+		D619D93E1C39BAEC00BFC6AE /* TicketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D619D93D1C39BAEC00BFC6AE /* TicketInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		BB89644F1C26E9B900F4F707 /* smartphone233.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartphone233.png; sourceTree = "<group>"; };
 		D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTable.swift; sourceTree = "<group>"; };
 		D603C37C1C234709006537D7 /* ViewControllerHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerHelp.swift; sourceTree = "<group>"; };
+		D619D93D1C39BAEC00BFC6AE /* TicketInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				BB7A86511C1CA1C800481D21 /* Info.plist */,
 				D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */,
 				D603C37C1C234709006537D7 /* ViewControllerHelp.swift */,
+				D619D93D1C39BAEC00BFC6AE /* TicketInfo.swift */,
 				BB0EFD901C276CDE006FD07E /* DataController.swift */,
 			);
 			path = QRCodeGen;
@@ -179,6 +182,7 @@
 				D603C37B1C2346C8006537D7 /* ViewControllerTable.swift in Sources */,
 				BB7A86481C1CA1C800481D21 /* ViewController.swift in Sources */,
 				BB0EFD841C275F4D006FD07E /* CoreData.xcdatamodeld in Sources */,
+				D619D93E1C39BAEC00BFC6AE /* TicketInfo.swift in Sources */,
 				BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */,
 				BB0EFD8E1C2765EE006FD07E /* Tickets+CoreDataProperties.swift in Sources */,
 				BB0EFD911C276CDE006FD07E /* DataController.swift in Sources */,

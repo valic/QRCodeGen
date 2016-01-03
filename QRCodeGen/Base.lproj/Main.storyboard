@@ -84,6 +84,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -97,11 +98,55 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="Spq-O5-BHG" id="do3-2m-Qvm"/>
+                        <segue destination="UTk-8Q-zoa" kind="show" identifier="segueID" id="Hai-Ah-bPs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-N6-gmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316.5" y="-121.5"/>
+            <point key="canvasLocation" x="343" y="-134"/>
+        </scene>
+        <!--Ticket Info-->
+        <scene sceneID="F6P-7M-1SW">
+            <objects>
+                <viewController id="UTk-8Q-zoa" customClass="TicketInfo" customModule="QRCodeGen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d3v-Rw-2m8"/>
+                        <viewControllerLayoutGuide type="bottom" id="DAS-gw-S6u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YEt-X0-7iD" customClass="TicketInformation" customModule="QRCodeGen" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="departureLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpV-Ve-UC0">
+                                <rect key="frame" x="20" y="203" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ticketNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhJ-1b-soD">
+                                <rect key="frame" x="44" y="131" width="233" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="destinationLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msj-lI-OIh">
+                                <rect key="frame" x="163" y="203" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="departureLabel" destination="JpV-Ve-UC0" id="7VO-Wm-HUa"/>
+                        <outlet property="destinationLabel" destination="Msj-lI-OIh" id="3s5-bh-F1p"/>
+                        <outlet property="ticketNameLabel" destination="vhJ-1b-soD" id="NLK-Zl-bhV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X0w-7Z-fQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1030" y="-22"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nzt-gj-GYi">

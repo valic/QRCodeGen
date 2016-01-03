@@ -105,6 +105,38 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
             
                     }
     }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        
+        print("didSelectRowAtIndexPath")
+        
+         self.performSegueWithIdentifier("segueID", sender: nil)
+        
+        
+        
+        
+       //let ticketInfo = self.storyboard!.instantiateViewControllerWithIdentifier("TicketInfo") as! TicketInfo
+        
+       // self.ViewController.pushViewController(TicketInfo, animated: true)
+        
+        //let storyboard = UIStoryboard(name: "ticketInfo", bundle: nil)
+       // presentViewController(ticketInfo, animated: true, completion: nil)
+        
+        //performSegueWithIdentifier("ticketInfo", sender: nil)
+        
+        
+        //let vc = storyboard.instantiateViewControllerWithIdentifier("ticketInfo")
+      //  self.presentViewController(vc, animated: true, completion: nil)
+        
+        
+        //let selectedItem = items.objectAtIndex(indexPath.row) as String
+        //let itemId = selectedItem.componentsSeparatedByString("$%^")
+        // add to self.selectedItems
+        //selectedItems[itemId[1]] = true
+    }
         
 }
     
