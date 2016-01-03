@@ -14,13 +14,16 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet var tableView: UITableView!
     var tickets = [NSManagedObject]()
     
+
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-      // fetch()
+    //   fetch()
 
         
         // Do any additional setup after loading the view.
@@ -77,6 +80,32 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         self.tableView.reloadData()
     }
+    
+    func refresh(){
+        do {
+            let request = NSFetchRequest(entityName: "Tickets")
+            tickets = try DataController().managedObjectContext.executeFetchRequest(request) as! [Tickets]
+            
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        self.tableView.reloadData()
+    }
+
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // 1
+        if editingStyle == .Delete {
+            
+            
+            self.tickets.removeAtIndex(indexPath.row)
+            
+            self.tableView.reloadData()
+            
+                    }
+    }
+        
 }
     
 
