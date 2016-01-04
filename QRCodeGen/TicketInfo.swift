@@ -9,25 +9,30 @@
 import UIKit
 import CoreData
 
-class TicketInfo: UIViewController {
+class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     
     
     @IBOutlet weak var ticketNameLabel: UILabel!
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     
-    
+    var value:Int!
+    var ticketID:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let edgeGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "userSwipedFromEdge:")
+        edgeGestureRecognizer.edges = UIRectEdge.Left
+        edgeGestureRecognizer.delegate = self
+        self.view.addGestureRecognizer(edgeGestureRecognizer)
         
                
-       ticketNameLabel.text = "ticketID"
+        ticketNameLabel.text = "ticketID"
         departureLabel.text = "departure"
         destinationLabel.text = "destination"
 
         
-        
+        print(ticketID)
         
         /*
         var tickets = [NSManagedObject]()
@@ -49,8 +54,15 @@ class TicketInfo: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
+//    func userSwipedFromEdge(sender: UIScreenEdgePanGestureRecognizer) {
+//        if sender.edges == UIRectEdge.Left {
+//            print("It works!")
+//            self.performSegueWithIdentifier("done", sender: nil)
+//        }
+//    }
 
     /*
     // MARK: - Navigation

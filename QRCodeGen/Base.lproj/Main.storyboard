@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bc9-8Q-Yf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-145" y="866"/>
+            <point key="canvasLocation" x="-207" y="1310"/>
         </scene>
         <!--tickets-->
         <scene sceneID="VxO-Ha-GFF">
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-N6-gmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="-163"/>
+            <point key="canvasLocation" x="-219" y="-42"/>
         </scene>
         <!--Ticket Info-->
         <scene sceneID="F6P-7M-1SW">
@@ -113,7 +113,7 @@
                         <viewControllerLayoutGuide type="top" id="d3v-Rw-2m8"/>
                         <viewControllerLayoutGuide type="bottom" id="DAS-gw-S6u"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YEt-X0-7iD" customClass="TicketInformation" customModule="QRCodeGen" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="YEt-X0-7iD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -141,7 +141,7 @@
                                     <navigationItem title="Title" id="6pE-de-LTg">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="MkD-yi-PQ1">
                                             <connections>
-                                                <segue destination="RCx-I1-mOk" kind="show" id="h67-cz-BTf"/>
+                                                <segue destination="RCx-I1-mOk" kind="show" identifier="done" id="h67-cz-BTf"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -158,12 +158,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0w-7Z-fQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="547.5" y="-220.5"/>
+            <point key="canvasLocation" x="397.5" y="-42"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nzt-gj-GYi">
             <objects>
                 <tabBarController id="RCx-I1-mOk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PYF-aJ-Dw3"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="RPJ-XB-Sbd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -177,7 +178,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjw-cH-cOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-596" y="-42"/>
+            <point key="canvasLocation" x="-783" y="-42"/>
         </scene>
         <!--scan-->
         <scene sceneID="tne-QT-ifu">
@@ -197,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-53" y="434"/>
+            <point key="canvasLocation" x="-219" y="658"/>
         </scene>
     </scenes>
     <resources>

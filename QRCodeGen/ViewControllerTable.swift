@@ -13,20 +13,18 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
 
     @IBOutlet var tableView: UITableView!
     var tickets = [NSManagedObject]()
-    
-
-    
+    let textCellIdentifier = "TextCell" // func tableView
+    var ticketIDString:String = ""
+    //var counter = 0
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
     //   fetch()
-
         
-        // Do any additional setup after loading the view.
+       // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,9 +38,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         //  fetchingFromCoreData ()
         
     }
-    let textCellIdentifier = "TextCell"
 
-    
     
     // MARK:  UITextFieldDelegate Methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -58,7 +54,6 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         
         //let row = indexPath.row
       //  cell.textLabel?.text = tickets[indexPath.row]
-        
         let person = tickets[indexPath.row]
         cell.textLabel!.text = person.valueForKey("ticketID") as? String
         
@@ -81,63 +76,40 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         self.tableView.reloadData()
     }
     
-    func refresh(){
-        do {
-            let request = NSFetchRequest(entityName: "Tickets")
-            tickets = try DataController().managedObjectContext.executeFetchRequest(request) as! [Tickets]
-            
-        } catch let error as NSError {
-            // failure
-            print("Fetch failed: \(error.localizedDescription)")
-        }
-        self.tableView.reloadData()
-    }
-
-    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        // 1
         if editingStyle == .Delete {
-            
-            
+          
             self.tickets.removeAtIndex(indexPath.row)
-            
             self.tableView.reloadData()
-            
                     }
     }
     
+   
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        fetch()
+        
+        let test = tickets[indexPath.row]
+        ticketIDString = test.valueForKey("ticketID") as! String
         
         
-        
-        print("didSelectRowAtIndexPath")
-        
-         self.performSegueWithIdentifier("segueID", sender: nil)
-        
-        
-        
-        
-       //let ticketInfo = self.storyboard!.instantiateViewControllerWithIdentifier("TicketInfo") as! TicketInfo
-        
-       // self.ViewController.pushViewController(TicketInfo, animated: true)
-        
-        //let storyboard = UIStoryboard(name: "ticketInfo", bundle: nil)
-       // presentViewController(ticketInfo, animated: true, completion: nil)
-        
-        //performSegueWithIdentifier("ticketInfo", sender: nil)
-        
-        
-        //let vc = storyboard.instantiateViewControllerWithIdentifier("ticketInfo")
-      //  self.presentViewController(vc, animated: true, completion: nil)
-        
-        
-        //let selectedItem = items.objectAtIndex(indexPath.row) as String
-        //let itemId = selectedItem.componentsSeparatedByString("$%^")
-        // add to self.selectedItems
-        //selectedItems[itemId[1]] = true
+        self.performSegueWithIdentifier("segueID", sender: nil)
     }
+    
+   
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segueID" {
+            if let destinationVC = segue.destinationViewController as? TicketInfo {
+                
+                destinationVC.ticketID = ticketIDString
+                
+                
+            }
+        }
+    }
+  
+    
+    
         
 }
-    
-
