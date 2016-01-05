@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
@@ -16,6 +17,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     let textCellIdentifier = "TextCell" // func tableView
     var ticketIDString:String = ""
     //var counter = 0
+    let moc = DataController().managedObjectContext
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +69,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         
         do {
             let request = NSFetchRequest(entityName: "Tickets")
-            tickets = try DataController().managedObjectContext.executeFetchRequest(request) as! [Tickets]
+            tickets = try moc.executeFetchRequest(request) as! [Tickets]
         
         } catch let error as NSError {
             // failure
@@ -79,9 +81,16 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
           
-            self.tickets.removeAtIndex(indexPath.row)
-            self.tableView.reloadData()
-                    }
+        moc.deleteObject(tickets[indexPath.row])
+            
+        do {
+            try moc.save()
+        } catch {
+                print("failed to clear core data")
+                }
+        }
+        self.tickets.removeAtIndex(indexPath.row)
+        self.tableView.reloadData()
     }
     
    
