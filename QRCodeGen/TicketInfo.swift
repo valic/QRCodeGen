@@ -12,12 +12,32 @@ import CoreData
 class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     
     
-    @IBOutlet weak var ticketNameLabel: UILabel!
+    
     @IBOutlet weak var departureLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var imgQRCode: UIImageView!
+    @IBOutlet weak var trainLabel: UILabel!
+    @IBOutlet weak var coachLabel: UILabel!
+    @IBOutlet weak var seatLabel: UILabel!
+    @IBOutlet weak var costLabel: UILabel!
     
-    var value:Int!
-    var ticketID:String = ""
+    
+    
+    var qrcodeImage: CIImage!
+    
+
+    //Int(myString)
+
+    var stringTicket = ""
+    var train = ""
+    var departure = ""
+    var destination = ""
+    var coach = ""
+    var seat = ""
+    var surnameAndName = ""
+    var cost:Float = 0.0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +46,19 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         edgeGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(edgeGestureRecognizer)
         
-               
-        ticketNameLabel.text = "ticketID"
-        departureLabel.text = "departure"
-        destinationLabel.text = "destination"
+               print(String((train as NSString).integerValue))
 
+        departureLabel.text = stringRemoveRange10(departure)
+        destinationLabel.text = stringRemoveRange10(destination)
         
-        print(ticketID)
+        trainLabel.text = (String((train as NSString).integerValue))
+        coachLabel.text = coach
+        seatLabel.text = (String((seat as NSString).integerValue))
+        let nf = NSNumberFormatter()
+        nf.numberStyle = .DecimalStyle
+        costLabel.text = nf.stringFromNumber(cost)! + " \u{20B4}"
+
+        generationQR(stringTicket)
         
         /*
         var tickets = [NSManagedObject]()
@@ -56,6 +82,42 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
         
     }
+    
+    func generationQR (textQR: String) {
+        
+        let data = textQR.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        if data != nil {
+            
+            let filter = CIFilter(name: "CIQRCodeGenerator")
+            
+            filter!.setValue(data, forKey: "inputMessage")
+            filter!.setValue("L", forKey: "inputCorrectionLevel")
+            
+            qrcodeImage = filter!.outputImage
+            
+            displayQRCodeImage()
+        }
+            
+        else {
+            qrcodeImage = nil
+        }
+    }
+    
+    func displayQRCodeImage() {
+        let scaleX = imgQRCode.frame.size.width / qrcodeImage.extent.size.width
+        let scaleY = imgQRCode.frame.size.height / qrcodeImage.extent.size.height
+        
+        let transformedImage = qrcodeImage.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
+        
+        imgQRCode.image = UIImage(CIImage: transformedImage)
+        
+    }
+    
+    func stringRemoveRange10 (string: String) -> String {
+        let range  = string.startIndex.advancedBy(10)..<string.endIndex
+        return string[range]
+    }
+
     
 //    func userSwipedFromEdge(sender: UIScreenEdgePanGestureRecognizer) {
 //        if sender.edges == UIRectEdge.Left {

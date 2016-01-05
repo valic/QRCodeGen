@@ -15,8 +15,17 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet var tableView: UITableView!
     var tickets = [NSManagedObject]()
     let textCellIdentifier = "TextCell" // func tableView
-    var ticketIDString:String = ""
-    //var counter = 0
+    
+    
+    var stringTicket = ""
+    var train = ""
+    var departure = ""
+    var destination = ""
+    var coach = ""
+    var seat = ""
+    var surnameAndName = ""
+    var cost:Float = 0.0
+    
     let moc = DataController().managedObjectContext
    
     override func viewDidLoad() {
@@ -99,7 +108,16 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         fetch()
         
         let test = tickets[indexPath.row]
-        ticketIDString = test.valueForKey("ticketID") as! String
+                
+        stringTicket = test.valueForKey("stringTicket") as! String
+        train = test.valueForKey("train") as! String
+        departure = test.valueForKey("departure") as! String
+        destination = test.valueForKey("destination") as! String
+        coach = test.valueForKey("coach") as! String
+        seat = test.valueForKey("seat") as! String
+        surnameAndName = test.valueForKey("surnameAndName") as! String
+        cost = test.valueForKey("cost") as! Float
+
         
         
         self.performSegueWithIdentifier("segueID", sender: nil)
@@ -111,9 +129,14 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         if segue.identifier == "segueID" {
             if let destinationVC = segue.destinationViewController as? TicketInfo {
                 
-                destinationVC.ticketID = ticketIDString
-                
-                
+                destinationVC.stringTicket = stringTicket
+                destinationVC.train = train
+                destinationVC.departure = departure
+                destinationVC.destination = destination
+                destinationVC.coach = coach
+                destinationVC.seat = seat
+                destinationVC.surnameAndName = surnameAndName
+                destinationVC.cost = cost
             }
         }
     }
