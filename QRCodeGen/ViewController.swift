@@ -275,7 +275,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                                 entity.setValue(arrayScanCode[2], forKey: "departure") // відправлення
                                 entity.setValue(arrayScanCode[3], forKey: "destination") // призначення
                                 entity.setValue(stringToDate(arrayScanCode[4]), forKey: "dateTimeDep") // датаЧасВідпр
-                                entity.setValue(stringToDate(arrayScanCode[5]), forKey: "dateTimeDep") // датаЧасПриб
+                                entity.setValue(stringToDate(arrayScanCode[5]), forKey: "dateTimeDes") // датаЧасПриб
                                 entity.setValue(arrayScanCode[6], forKey: "coach") // вагон
                                 entity.setValue(arrayScanCode[7], forKey: "seat") // місце
                                 entity.setValue(arrayScanCode[9], forKey: "surnameAndName") // прізвищеІмя

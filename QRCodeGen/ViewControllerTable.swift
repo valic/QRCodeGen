@@ -16,6 +16,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     var tickets = [NSManagedObject]()
     let textCellIdentifier = "TextCell" // func tableView
     
+  
     
     var stringTicket = ""
     var train = ""
@@ -25,6 +26,8 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     var seat = ""
     var surnameAndName = ""
     var cost:Float = 0.0
+    var dateTimeDep = NSDate()
+    var dateTimeDes = NSDate()
     
     let moc = DataController().managedObjectContext
    
@@ -67,6 +70,9 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
       //  cell.textLabel?.text = tickets[indexPath.row]
         let person = tickets[indexPath.row]
         cell.textLabel!.text = person.valueForKey("ticketID") as? String
+      //  cell.imageView?.image = UIImage(named: "park2.png")
+       
+      //  image2
         
         //        cell.textLabel!.text = ticketsList[indexPath.item]
         
@@ -117,7 +123,9 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         seat = test.valueForKey("seat") as! String
         surnameAndName = test.valueForKey("surnameAndName") as! String
         cost = test.valueForKey("cost") as! Float
-
+        dateTimeDep = test.valueForKey("dateTimeDep") as! NSDate
+        dateTimeDes = test.valueForKey("dateTimeDes") as! NSDate
+        
         
         
         self.performSegueWithIdentifier("segueID", sender: nil)
@@ -137,6 +145,8 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
                 destinationVC.seat = seat
                 destinationVC.surnameAndName = surnameAndName
                 destinationVC.cost = cost
+                destinationVC.dateTimeDep = dateTimeDep
+                destinationVC.dateTimeDes = dateTimeDes
             }
         }
     }

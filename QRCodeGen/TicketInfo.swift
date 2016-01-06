@@ -20,6 +20,8 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     @IBOutlet weak var coachLabel: UILabel!
     @IBOutlet weak var seatLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var dateTimeDepLabel: UILabel!
+    @IBOutlet weak var dateTimeDesLabel: UILabel!
     
     
     
@@ -36,6 +38,8 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     var seat = ""
     var surnameAndName = ""
     var cost:Float = 0.0
+    var dateTimeDep = NSDate()
+    var dateTimeDes = NSDate()
     
     
     
@@ -46,8 +50,6 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         edgeGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(edgeGestureRecognizer)
         
-               print(String((train as NSString).integerValue))
-
         departureLabel.text = stringRemoveRange10(departure)
         destinationLabel.text = stringRemoveRange10(destination)
         
@@ -57,22 +59,10 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         let nf = NSNumberFormatter()
         nf.numberStyle = .DecimalStyle
         costLabel.text = nf.stringFromNumber(cost)! + " \u{20B4}"
-
+        
+        dateTimeDepLabel.text = dateToString(dateTimeDep)
+        dateTimeDesLabel.text = dateToString(dateTimeDes)
         generationQR(stringTicket)
-        
-        /*
-        var tickets = [NSManagedObject]()
-        let person = tickets[indexPath!.row]
-        let dept = tickets[indexPath!.row]
-        let dest = tickets[indexPath!.row]
-        
-        
-        ticketNameLabel.text = person.valueForKey("ticketID") as? String
-        departureLabel.text = dept.valueForKey("departure") as? String
-        destinationLabel.text = dest.valueForKey("destination") as? String
-        
-        */
-        
         
         // Do any additional setup after loading the view.
     }
@@ -116,6 +106,13 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     func stringRemoveRange10 (string: String) -> String {
         let range  = string.startIndex.advancedBy(10)..<string.endIndex
         return string[range]
+    }
+    
+    func dateToString (date: NSDate) -> String  {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd MMMM HH:mm"
+        return dateFormatter.stringFromDate(date)
     }
 
     
