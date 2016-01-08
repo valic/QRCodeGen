@@ -68,6 +68,8 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         generationQR(stringTicket)
         
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.title = ""
     }
 
     override func didReceiveMemoryWarning() {
