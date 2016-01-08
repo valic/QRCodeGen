@@ -11,6 +11,7 @@
 		BB0EFD8E1C2765EE006FD07E /* Tickets+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0EFD8C1C2765EE006FD07E /* Tickets+CoreDataProperties.swift */; };
 		BB0EFD8F1C2765EE006FD07E /* Tickets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0EFD8D1C2765EE006FD07E /* Tickets.swift */; };
 		BB0EFD911C276CDE006FD07E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0EFD901C276CDE006FD07E /* DataController.swift */; };
+		BB25D64D1C40295600787B4F /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25D64C1C40295600787B4F /* TicketTableViewCell.swift */; };
 		BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A86451C1CA1C800481D21 /* AppDelegate.swift */; };
 		BB7A86481C1CA1C800481D21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A86471C1CA1C800481D21 /* ViewController.swift */; };
 		BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A86491C1CA1C800481D21 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		BB0EFD8C1C2765EE006FD07E /* Tickets+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tickets+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB0EFD8D1C2765EE006FD07E /* Tickets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tickets.swift; sourceTree = "<group>"; };
 		BB0EFD901C276CDE006FD07E /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		BB25D64C1C40295600787B4F /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		BB7A86421C1CA1C800481D21 /* QRCodeGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7A86451C1CA1C800481D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7A86471C1CA1C800481D21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				D603C37C1C234709006537D7 /* ViewControllerHelp.swift */,
 				D619D93D1C39BAEC00BFC6AE /* TicketInfo.swift */,
 				BB0EFD901C276CDE006FD07E /* DataController.swift */,
+				BB25D64C1C40295600787B4F /* TicketTableViewCell.swift */,
 			);
 			path = QRCodeGen;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				BB7A86461C1CA1C800481D21 /* AppDelegate.swift in Sources */,
 				BB0EFD8E1C2765EE006FD07E /* Tickets+CoreDataProperties.swift in Sources */,
 				BB0EFD911C276CDE006FD07E /* DataController.swift in Sources */,
+				BB25D64D1C40295600787B4F /* TicketTableViewCell.swift in Sources */,
 				D603C37D1C234709006537D7 /* ViewControllerHelp.swift in Sources */,
 				BB0EFD8F1C2765EE006FD07E /* Tickets.swift in Sources */,
 			);
@@ -302,7 +306,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QRCodeGen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MialinVV.QRCodeGen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,7 +323,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QRCodeGen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MialinVV.QRCodeGen;
 				PRODUCT_NAME = "$(TARGET_NAME)";

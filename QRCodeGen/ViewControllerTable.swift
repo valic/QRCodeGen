@@ -64,12 +64,14 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
-        
+        //let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! TicketTableViewCell
         //let row = indexPath.row
       //  cell.textLabel?.text = tickets[indexPath.row]
         let person = tickets[indexPath.row]
-        cell.textLabel!.text = person.valueForKey("ticketID") as? String
+        cell.departureLabel!.text = stringRemoveRange10((person.valueForKey("departure") as? String)!)
+        cell.destinationLabel!.text = stringRemoveRange10((person.valueForKey("destination") as? String)!)
+        cell.dateTimeDepLabel!.text = dateToString(person.valueForKey("dateTimeDep") as! NSDate)
       //  cell.imageView?.image = UIImage(named: "park2.png")
        
       //  image2
@@ -90,7 +92,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
             // failure
             print("Fetch failed: \(error.localizedDescription)")
         }
-        self.tableView.reloadData()
+       self.tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -105,7 +107,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
                 }
         }
         self.tickets.removeAtIndex(indexPath.row)
-        self.tableView.reloadData()
+      //  self.tableView.reloadData()
     }
     
    
@@ -150,6 +152,19 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
             }
         }
     }
+    
+    func stringRemoveRange10 (string: String) -> String {
+        let range  = string.startIndex.advancedBy(10)..<string.endIndex
+        return string[range]
+    }
+    
+    func dateToString (date: NSDate) -> String  {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd MMMM HH:mm"
+        return dateFormatter.stringFromDate(date)
+    }
+
   
     
     
