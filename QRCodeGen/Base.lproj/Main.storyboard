@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RCx-I1-mOk">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -42,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="723" y="759"/>
         </scene>
-        <!--tickets-->
+        <!--View Controller Table-->
         <scene sceneID="VxO-Ha-GFF">
             <objects>
                 <viewController id="XBk-sk-dCy" customClass="ViewControllerTable" customModule="QRCodeGen" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,47 +58,47 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextCell" rowHeight="160" id="Cvf-uW-fLz" customClass="TicketTableViewCell" customModule="QRCodeGen" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cvf-uW-fLz" id="7ct-AC-jDc">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="49d-l1-zcg">
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="49d-l1-zcg">
                                                     <rect key="frame" x="-12" y="-12" width="424" height="191"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗВІДКИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84l-gG-Cku">
-                                                            <rect key="frame" x="20" y="20" width="384" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ЗВІДКИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84l-gG-Cku">
+                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="МИКОЛАЇВ ПАС" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGj-iH-GYU">
-                                                            <rect key="frame" x="20" y="44" width="130" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="МИКОЛАЇВ ПАС" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGj-iH-GYU">
+                                                            <rect key="frame" x="0.0" y="21" width="207" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="КУДИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bQ-up-hzW">
-                                                            <rect key="frame" x="20" y="73" width="177" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="КУДИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bQ-up-hzW">
+                                                            <rect key="frame" x="0.0" y="42" width="207" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="721-6i-n9U">
-                                                            <rect key="frame" x="20" y="97" width="140" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="721-6i-n9U">
+                                                            <rect key="frame" x="0.0" y="63" width="207" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВІДПРАВЛЕННЯ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmO-dY-hqW">
-                                                            <rect key="frame" x="20" y="126" width="178" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ВІДПРАВЛЕННЯ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmO-dY-hqW">
+                                                            <rect key="frame" x="0.0" y="84" width="207" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0P-Ma-EVv">
-                                                            <rect key="frame" x="20" y="150" width="140" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0P-Ma-EVv">
+                                                            <rect key="frame" x="0.0" y="105" width="207" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -231,7 +230,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="tickets" image="park2.png" selectedImage="park2.png" id="1r6-Rk-2uU" userLabel="main"/>
+                    <navigationItem key="navigationItem" id="u2R-89-UXw">
+                        <barButtonItem key="backBarButtonItem" title=" " id="jWw-4j-VMR"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Spq-O5-BHG" id="do3-2m-Qvm"/>
                         <segue destination="UTk-8Q-zoa" kind="show" identifier="segueID" id="Hai-Ah-bPs"/>
@@ -239,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-N6-gmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-45" y="-42"/>
+            <point key="canvasLocation" x="767" y="-42"/>
         </scene>
         <!--Ticket Info-->
         <scene sceneID="F6P-7M-1SW">
@@ -262,18 +263,6 @@
                                     <rect key="frame" x="9" y="102" width="130" height="21"/>
                                 </variation>
                             </label>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfZ-4s-8TF">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Квиток" id="6pE-de-LTg">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="MkD-yi-PQ1">
-                                            <connections>
-                                                <segue destination="RCx-I1-mOk" kind="show" identifier="done" id="h67-cz-BTf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗВІДКИ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn9-vr-2YV">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -409,7 +398,6 @@
                             </constraint>
                             <constraint firstItem="3gt-re-MHA" firstAttribute="width" secondItem="vnF-Hp-kvU" secondAttribute="width" id="Cmo-Xd-Hry"/>
                             <constraint firstItem="zH3-nx-XhR" firstAttribute="width" secondItem="Tn9-vr-2YV" secondAttribute="width" id="DDU-dJ-3Sx"/>
-                            <constraint firstItem="bfZ-4s-8TF" firstAttribute="top" secondItem="d3v-Rw-2m8" secondAttribute="bottom" id="Gax-J7-UvO"/>
                             <constraint firstItem="v2n-4A-TLH" firstAttribute="top" secondItem="IHy-lg-a7F" secondAttribute="bottom" constant="8" id="HQf-tE-WTh">
                                 <variation key="widthClass=compact" constant="10"/>
                             </constraint>
@@ -435,7 +423,6 @@
                             <constraint firstItem="c6m-og-5ko" firstAttribute="top" secondItem="CMY-1F-sXb" secondAttribute="bottom" constant="8" id="aRd-qX-PkN"/>
                             <constraint firstItem="JpV-Ve-UC0" firstAttribute="width" secondItem="Tn9-vr-2YV" secondAttribute="width" id="dRV-OI-VLv"/>
                             <constraint firstItem="v2n-4A-TLH" firstAttribute="centerX" secondItem="IHy-lg-a7F" secondAttribute="centerX" id="fkn-hZ-d48"/>
-                            <constraint firstItem="bfZ-4s-8TF" firstAttribute="leading" secondItem="YEt-X0-7iD" secondAttribute="leading" id="g7t-l3-Gm4"/>
                             <constraint firstItem="eVr-PU-ZBb" firstAttribute="leading" secondItem="9hk-2o-yEL" secondAttribute="trailing" constant="10" id="kgd-d1-Z8y"/>
                             <constraint firstItem="Msj-lI-OIh" firstAttribute="top" secondItem="zH3-nx-XhR" secondAttribute="bottom" constant="3" id="m8B-mW-MIw"/>
                             <constraint firstItem="RZ3-od-NjB" firstAttribute="centerX" secondItem="vnF-Hp-kvU" secondAttribute="centerX" id="nOA-BA-2tG"/>
@@ -446,7 +433,6 @@
                             <constraint firstItem="IHy-lg-a7F" firstAttribute="leading" secondItem="hpd-ZV-YlB" secondAttribute="trailing" constant="8" id="tEZ-Br-of9">
                                 <variation key="widthClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="bfZ-4s-8TF" secondAttribute="trailing" id="uQe-73-hlX"/>
                             <constraint firstItem="hpd-ZV-YlB" firstAttribute="top" secondItem="d3v-Rw-2m8" secondAttribute="bottom" constant="111" id="uc9-pz-N22"/>
                             <constraint firstItem="9hk-2o-yEL" firstAttribute="width" secondItem="hpd-ZV-YlB" secondAttribute="width" id="vIT-4g-ej1"/>
                             <constraint firstItem="v2n-4A-TLH" firstAttribute="width" secondItem="IHy-lg-a7F" secondAttribute="width" id="vzZ-6m-Re1"/>
@@ -519,9 +505,6 @@
                                 <exclude reference="HQf-tE-WTh"/>
                                 <exclude reference="fkn-hZ-d48"/>
                                 <exclude reference="vzZ-6m-Re1"/>
-                                <exclude reference="Gax-J7-UvO"/>
-                                <exclude reference="g7t-l3-Gm4"/>
-                                <exclude reference="uQe-73-hlX"/>
                                 <exclude reference="3CT-yK-zDb"/>
                                 <exclude reference="VcB-TT-PJD"/>
                                 <exclude reference="dRV-OI-VLv"/>
@@ -595,9 +578,6 @@
                                 <include reference="HQf-tE-WTh"/>
                                 <include reference="fkn-hZ-d48"/>
                                 <include reference="vzZ-6m-Re1"/>
-                                <include reference="Gax-J7-UvO"/>
-                                <include reference="g7t-l3-Gm4"/>
-                                <include reference="uQe-73-hlX"/>
                                 <include reference="3CT-yK-zDb"/>
                                 <include reference="VcB-TT-PJD"/>
                                 <include reference="dRV-OI-VLv"/>
@@ -622,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0w-7Z-fQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783" y="-42"/>
+            <point key="canvasLocation" x="1595" y="-42"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nzt-gj-GYi">
@@ -635,7 +615,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="XBk-sk-dCy" kind="relationship" relationship="viewControllers" id="Agr-en-6IW"/>
+                        <segue destination="Lct-7S-u1T" kind="relationship" relationship="viewControllers" id="Agr-en-6IW"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Ve0-4a-yI0"/>
                         <segue destination="KzD-DA-94Z" kind="relationship" relationship="viewControllers" id="i2p-vM-Bct"/>
                     </connections>
@@ -664,10 +644,33 @@
             </objects>
             <point key="canvasLocation" x="-105" y="721"/>
         </scene>
+        <!--tickets-->
+        <scene sceneID="HwV-Cn-9DS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lct-7S-u1T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="tickets" image="park2.png" selectedImage="park2.png" id="1r6-Rk-2uU" userLabel="main"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PAD-R3-x1w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XBk-sk-dCy" kind="relationship" relationship="rootViewController" id="EUY-Iq-PsO"/>
+                        <segue destination="XBk-sk-dCy" kind="show" id="vd4-mQ-qDa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWk-mM-oYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="-42"/>
+        </scene>
     </scenes>
     <resources>
         <image name="info31.png" width="32" height="32"/>
         <image name="park2.png" width="32" height="32"/>
         <image name="smartphone233.png" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="vd4-mQ-qDa"/>
+    </inferredMetricsTieBreakers>
 </document>
