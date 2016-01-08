@@ -29,6 +29,8 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     var ticketID = ""
     
     let moc = DataController().managedObjectContext
+    
+    var i = 1
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,13 +73,24 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         cell.departureLabel!.text = stringRemoveRange10((person.valueForKey("departure") as? String)!)
         cell.destinationLabel!.text = stringRemoveRange10((person.valueForKey("destination") as? String)!)
         let dateTimeDep = person.valueForKey("dateTimeDep") as! NSDate
-        let dateTimeDes = person.valueForKey("dateTimeDes") as! NSDate
+      //  let dateTimeDes = person.valueForKey("dateTimeDes") as! NSDate
         
         cell.dateTimeDepLabel!.text = dateToString(dateTimeDep)
+       // cell.userInteractionEnabled = true
         
-        cell.backgroundColor = UIColor.redColor()
         
-        print(isBetweenMyTwoDates(dateTimeDep, end: dateTimeDes))
+        
+        if i == 1 {
+        
+        cell.contentView.alpha = 0.5
+            i++
+            }
+        else {
+            print("ss")
+        }
+       // cell.backgroundColor = UIColor.redColor()
+        
+       // print(isBetweenMyTwoDates(dateTimeDep, end: dateTimeDes))
         
       //  cell.imageView?.image = UIImage(named: "park2.png")
        
