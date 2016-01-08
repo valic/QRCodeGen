@@ -22,6 +22,7 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var dateTimeDepLabel: UILabel!
     @IBOutlet weak var dateTimeDesLabel: UILabel!
+    @IBOutlet weak var ticketIdLabel: UILabel!
     
     
     
@@ -40,6 +41,7 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     var cost:Float = 0.0
     var dateTimeDep = NSDate()
     var dateTimeDes = NSDate()
+    var ticketID = ""
     
     
     
@@ -62,6 +64,7 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         
         dateTimeDepLabel.text = dateToString(dateTimeDep)
         dateTimeDesLabel.text = dateToString(dateTimeDes)
+        ticketIdLabel.text = ticketID
         generationQR(stringTicket)
         
         // Do any additional setup after loading the view.

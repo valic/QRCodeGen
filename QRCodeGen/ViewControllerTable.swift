@@ -16,8 +16,6 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     var tickets = [NSManagedObject]()
     let textCellIdentifier = "TextCell" // func tableView
     
-  
-    
     var stringTicket = ""
     var train = ""
     var departure = ""
@@ -28,6 +26,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     var cost:Float = 0.0
     var dateTimeDep = NSDate()
     var dateTimeDes = NSDate()
+    var ticketID = ""
     
     let moc = DataController().managedObjectContext
    
@@ -71,7 +70,15 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         let person = tickets[indexPath.row]
         cell.departureLabel!.text = stringRemoveRange10((person.valueForKey("departure") as? String)!)
         cell.destinationLabel!.text = stringRemoveRange10((person.valueForKey("destination") as? String)!)
-        cell.dateTimeDepLabel!.text = dateToString(person.valueForKey("dateTimeDep") as! NSDate)
+        let dateTimeDep = person.valueForKey("dateTimeDep") as! NSDate
+        let dateTimeDes = person.valueForKey("dateTimeDes") as! NSDate
+        
+        cell.dateTimeDepLabel!.text = dateToString(dateTimeDep)
+        
+        cell.backgroundColor = UIColor.redColor()
+        
+        print(isBetweenMyTwoDates(dateTimeDep, end: dateTimeDes))
+        
       //  cell.imageView?.image = UIImage(named: "park2.png")
        
       //  image2
@@ -127,8 +134,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         cost = test.valueForKey("cost") as! Float
         dateTimeDep = test.valueForKey("dateTimeDep") as! NSDate
         dateTimeDes = test.valueForKey("dateTimeDes") as! NSDate
-        
-        
+        ticketID = test.valueForKey("ticketID") as! String
         
         self.performSegueWithIdentifier("segueID", sender: nil)
     }
@@ -149,6 +155,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
                 destinationVC.cost = cost
                 destinationVC.dateTimeDep = dateTimeDep
                 destinationVC.dateTimeDes = dateTimeDes
+                destinationVC.ticketID = ticketID
             }
         }
     }
@@ -163,6 +170,19 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd MMMM HH:mm"
         return dateFormatter.stringFromDate(date)
+    }
+    
+    
+//    let dateMaker = NSDateFormatter()
+//    dateMaker.dateFormat = "yyyy/MM/dd HH:mm:ss"
+//    let start = dateMaker.dateFromString("2016/01/01 08:00:00")!
+//    let end = dateMaker.dateFromString("2016/02/15 16:30:00")!
+    
+    func isBetweenMyTwoDates(start: NSDate, end: NSDate ) -> Bool {
+        if start.compare(NSDate()) == .OrderedAscending && end.compare(NSDate()) == .OrderedDescending {
+            return true
+        }
+        return false
     }
 
   
