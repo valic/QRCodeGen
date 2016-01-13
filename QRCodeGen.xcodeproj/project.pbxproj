@@ -17,11 +17,6 @@
 		BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A86491C1CA1C800481D21 /* Main.storyboard */; };
 		BB7A864D1C1CA1C800481D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB7A864C1C1CA1C800481D21 /* Assets.xcassets */; };
 		BB7A86501C1CA1C800481D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7A864E1C1CA1C800481D21 /* LaunchScreen.storyboard */; };
-		BB89644A1C26E9AF00F4F707 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BB8964491C26E9AF00F4F707 /* indicator.png */; };
-		BB8964501C26E9B900F4F707 /* info31.png in Resources */ = {isa = PBXBuildFile; fileRef = BB89644B1C26E9B900F4F707 /* info31.png */; };
-		BB8964521C26E9B900F4F707 /* park2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB89644D1C26E9B900F4F707 /* park2.png */; };
-		BB8964531C26E9B900F4F707 /* power17.png in Resources */ = {isa = PBXBuildFile; fileRef = BB89644E1C26E9B900F4F707 /* power17.png */; };
-		BB8964541C26E9B900F4F707 /* smartphone233.png in Resources */ = {isa = PBXBuildFile; fileRef = BB89644F1C26E9B900F4F707 /* smartphone233.png */; };
 		D603C37B1C2346C8006537D7 /* ViewControllerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */; };
 		D603C37D1C234709006537D7 /* ViewControllerHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603C37C1C234709006537D7 /* ViewControllerHelp.swift */; };
 		D619D93E1C39BAEC00BFC6AE /* TicketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D619D93D1C39BAEC00BFC6AE /* TicketInfo.swift */; };
@@ -41,11 +36,6 @@
 		BB7A864C1C1CA1C800481D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB7A864F1C1CA1C800481D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB7A86511C1CA1C800481D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB8964491C26E9AF00F4F707 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator.png; sourceTree = "<group>"; };
-		BB89644B1C26E9B900F4F707 /* info31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info31.png; sourceTree = "<group>"; };
-		BB89644D1C26E9B900F4F707 /* park2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park2.png; sourceTree = "<group>"; };
-		BB89644E1C26E9B900F4F707 /* power17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power17.png; sourceTree = "<group>"; };
-		BB89644F1C26E9B900F4F707 /* smartphone233.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartphone233.png; sourceTree = "<group>"; };
 		D603C37A1C2346C8006537D7 /* ViewControllerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTable.swift; sourceTree = "<group>"; };
 		D603C37C1C234709006537D7 /* ViewControllerHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerHelp.swift; sourceTree = "<group>"; };
 		D619D93D1C39BAEC00BFC6AE /* TicketInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketInfo.swift; sourceTree = "<group>"; };
@@ -69,11 +59,6 @@
 				BB0EFD8D1C2765EE006FD07E /* Tickets.swift */,
 				BB7A86441C1CA1C800481D21 /* QRCodeGen */,
 				BB7A86431C1CA1C800481D21 /* Products */,
-				BB8964491C26E9AF00F4F707 /* indicator.png */,
-				BB89644B1C26E9B900F4F707 /* info31.png */,
-				BB89644D1C26E9B900F4F707 /* park2.png */,
-				BB89644E1C26E9B900F4F707 /* power17.png */,
-				BB89644F1C26E9B900F4F707 /* smartphone233.png */,
 				BB0EFD851C2765B5006FD07E /* QRCodeGen-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
@@ -164,12 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB8964521C26E9B900F4F707 /* park2.png in Resources */,
-				BB8964501C26E9B900F4F707 /* info31.png in Resources */,
-				BB8964541C26E9B900F4F707 /* smartphone233.png in Resources */,
 				BB7A86501C1CA1C800481D21 /* LaunchScreen.storyboard in Resources */,
-				BB8964531C26E9B900F4F707 /* power17.png in Resources */,
-				BB89644A1C26E9AF00F4F707 /* indicator.png in Resources */,
 				BB7A864D1C1CA1C800481D21 /* Assets.xcassets in Resources */,
 				BB7A864B1C1CA1C800481D21 /* Main.storyboard in Resources */,
 			);
