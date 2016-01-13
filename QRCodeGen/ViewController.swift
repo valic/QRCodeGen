@@ -28,6 +28,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Do any additional setup after loading the view, typically from a nib.managedObjectContext
 
         super.viewDidLoad()
+        
+
     }
     
 //    deinit {
@@ -172,7 +174,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         do {
             try captureDevice.lockForConfiguration()
             if captureDevice.focusPointOfInterestSupported {
-                print(focusPoint)
+                //print(focusPoint)
                 captureDevice.focusPointOfInterest = focusPoint
                 
             }
@@ -237,7 +239,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 textQR = metadataObj.stringValue!
                 
                 if let textQR = textQR {
-                    print(textQR)
+                 //   print(textQR)
                     
                     let arrayScanCode = textQR.componentsSeparatedByString("\n")
                    
@@ -358,9 +360,56 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         dateFormatter.timeZone = NSTimeZone(name: "Europe/Kiev")
         dateFormatter.defaultDate = NSDate()
         let date = dateFormatter.dateFromString(stringData)
+        
+        let dayComponenet = NSDateComponents()
+        dayComponenet.day = 30
+        
+        let theCalendar = NSCalendar.currentCalendar()
+        let nextDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: NSDate(), options: [])
+       // print(nextDate)
+        
+        if date!.compare(nextDate!) == .OrderedDescending {
+            // Текущая дата больше конечной даты
+            
+            let dayComponenet = NSDateComponents()
+            dayComponenet.year = -1
+            
+            let theCalendar = NSCalendar.currentCalendar()
+            dateFormatter.defaultDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: NSDate(), options: [])
+       // print(dateFormatter.dateFromString(stringData)!)
+            return dateFormatter.dateFromString(stringData)!
+        }
+        else {
+            return date!
+        }
+
+       /* let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateFormat  = "dd.MM HH:mm" //21.11 20:01
+        dateFormatter.timeZone = NSTimeZone(name: "Europe/Kiev")
+        let dateMaker = NSDateFormatter()
+            dateMaker.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        //    let start = dateMaker.dateFromString("2016/01/01 08:00:00")!
+        //    let end = dateMaker.dateFromString("2016/02/15 16:30:00")!
+        
+        let dayComponenet = NSDateComponents()
+        dayComponenet.day = 31
+        
+        let theCalendar = NSCalendar.currentCalendar()
+        let nextDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: NSDate(), options: [])
+        
+        if NSDate().compare(nextDate!) == NSComparisonResult.OrderedDescending {
+            
+        }
+        
+        
+        
+        //dateFormatter.defaultDate = dateMaker.dateFromString("2001/01/01 00:00:00")
+        let date = dateFormatter.dateFromString(stringData)
         return date!
         //dateFormatter.dateFormat = "dd-MM HH:mm"
        // return dateFormatter.stringFromDate(date!)
+*/
     }
     
     func alertCaptureSession(messageText: String)
@@ -374,8 +423,23 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             //self.captureSession!.startRunning()
             self.presentViewController(alertController, animated: true, completion: nil)
     }
-
     
+    func dateStart(end: NSDate ) -> Bool {
+        //    var dateComparisionResult:NSComparisonResult = currentDate.compare(end)
+        if NSDate().compare(end) == NSComparisonResult.OrderedDescending {
+            
+            return true
+        }
+        return false
+    }
+    
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        deleteCaptureSession ()
+        videoPreviewLayer!.removeFromSuperlayer()
+    }
     
 }
 

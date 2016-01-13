@@ -30,7 +30,6 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     
     let moc = DataController().managedObjectContext
     
-    var i = 1
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,38 +64,25 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! TicketTableViewCell
-        //let row = indexPath.row
-      //  cell.textLabel?.text = tickets[indexPath.row]
+
         let person = tickets[indexPath.row]
         cell.departureLabel!.text = stringRemoveRange10((person.valueForKey("departure") as? String)!)
         cell.destinationLabel!.text = stringRemoveRange10((person.valueForKey("destination") as? String)!)
         let dateTimeDep = person.valueForKey("dateTimeDep") as! NSDate
-      //  let dateTimeDes = person.valueForKey("dateTimeDes") as! NSDate
-        
+        let dateTimeDes = person.valueForKey("dateTimeDes") as! NSDate
+        //print(dateTimeDes)
         cell.dateTimeDepLabel!.text = dateToString(dateTimeDep)
        // cell.userInteractionEnabled = true
         
         
-        
-        if i == 1 {
-        
-        cell.contentView.alpha = 0.5
-            i++
+        if (dateEnd(dateTimeDes) == true) {
+        cell.contentView.alpha = 0.75
             }
         else {
-            print("ss")
+            print("Дата в билете актуальна")
         }
-       // cell.backgroundColor = UIColor.redColor()
-        
-       // print(isBetweenMyTwoDates(dateTimeDep, end: dateTimeDes))
-        
-      //  cell.imageView?.image = UIImage(named: "park2.png")
-       
-      //  image2
-        
-        //        cell.textLabel!.text = ticketsList[indexPath.item]
         
         return cell
     }
@@ -127,7 +113,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
                 }
         }
         self.tickets.removeAtIndex(indexPath.row)
-      //  self.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
    
@@ -184,15 +170,19 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         dateFormatter.dateFormat = "dd MMMM HH:mm"
         return dateFormatter.stringFromDate(date)
     }
-    
-    
-//    let dateMaker = NSDateFormatter()
-//    dateMaker.dateFormat = "yyyy/MM/dd HH:mm:ss"
-//    let start = dateMaker.dateFromString("2016/01/01 08:00:00")!
-//    let end = dateMaker.dateFromString("2016/02/15 16:30:00")!
+
     
     func isBetweenMyTwoDates(start: NSDate, end: NSDate ) -> Bool {
         if start.compare(NSDate()) == .OrderedAscending && end.compare(NSDate()) == .OrderedDescending {
+            return true
+        }
+        return false
+    }
+    
+    func dateEnd(end: NSDate ) -> Bool {
+    //    var dateComparisionResult:NSComparisonResult = currentDate.compare(end)
+        if NSDate().compare(end) == NSComparisonResult.OrderedDescending {
+            
             return true
         }
         return false

@@ -116,7 +116,7 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     func dateToString (date: NSDate) -> String  {
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd MMMM HH:mm"
+        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
         return dateFormatter.stringFromDate(date)
     }
 
