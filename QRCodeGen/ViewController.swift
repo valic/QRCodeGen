@@ -18,6 +18,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var qrCodeFrameView:UIView?
     var textQR: String?
     let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+    @IBOutlet weak var flashlight: UIImageView!
+    
     
     // Added to support different barcodes
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code]
@@ -112,9 +114,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             let gesture = UITapGestureRecognizer(target: self, action: "tap:")
             self.view.addGestureRecognizer(gesture)
             
-            
+
             // Move the message label to the top view
             // view.bringSubviewToFront(messageLabel)
+            view.bringSubviewToFront(flashlight)
+            
             
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
@@ -204,7 +208,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         newImgThumb = UIImageView(frame:CGRectMake(0, 0, 100, 100))
         newImgThumb.contentMode = .ScaleAspectFit
         newImgThumb.center = point
-        newImgThumb.image = UIImage(named: "indicator.png")!
+        newImgThumb.image = UIImage(named: "indicator")!
         view.addSubview(newImgThumb)
         
         UIView.animateWithDuration(0.5, animations: { _ in
@@ -441,6 +445,35 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         videoPreviewLayer!.removeFromSuperlayer()
     }
     
+    @IBAction func flashlightAction(sender: AnyObject) {
+        toggleFlash(0.5)
+    }
+    
+    
+    func toggleFlash(input: Float) {
+        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        if (device.hasTorch) {
+            do {
+                try device.lockForConfiguration()
+                //device.torchMode = AVCaptureTorchMode.On
+                //try device.setTorchModeOnWithLevel(input)
+                
+                if (device.torchMode == AVCaptureTorchMode.On) {
+                    device.torchMode = AVCaptureTorchMode.Off
+                } else {
+                    do {
+                        try device.setTorchModeOnWithLevel(input)
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 
