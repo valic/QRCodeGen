@@ -28,6 +28,10 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         
         // Do any additional setup after loading the view, typically from a nib.managedObjectContext
+        
+        // анимация flashlight
+        self.flashlight.transform = CGAffineTransformMakeScale(0.0, 0.0)
+        
 
         super.viewDidLoad()
         
@@ -77,8 +81,15 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
             self.presentViewController(alert, animated: true, completion: nil)
             
+            
+            
+            
         }
     }
+    override func viewDidAppear(animated: Bool) {
+        
+        // анимация flashlight
+        UIView.animateWithDuration(0.4, delay: 0, options: [], animations: {self.flashlight.transform = CGAffineTransformIdentity}, completion: nil)    }
    
 
     func initializationCaptureSession () {
@@ -443,6 +454,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         deleteCaptureSession ()
         videoPreviewLayer!.removeFromSuperlayer()
+        
+        // анимация flashlight
+        self.flashlight.transform = CGAffineTransformMakeScale(0.0, 0.0)
     }
     
     @IBAction func flashlightAction(sender: AnyObject) {
@@ -460,9 +474,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
                 if (device.torchMode == AVCaptureTorchMode.On) {
                     device.torchMode = AVCaptureTorchMode.Off
+                    flashlight.image = UIImage(named: "flashlightOff")
                 } else {
                     do {
                         try device.setTorchModeOnWithLevel(input)
+                        flashlight.image = UIImage(named: "flashlightOn")
                     } catch {
                         print(error)
                     }

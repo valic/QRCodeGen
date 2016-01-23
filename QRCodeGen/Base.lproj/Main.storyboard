@@ -727,9 +727,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flashlight" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04z-Qc-tay">
+                            <imageView alpha="0.75" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flashlightOff" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04z-Qc-tay">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="Gon-2Y-7tG">
+                                        <variation key="widthClass=compact" constant="30"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="26" id="mEv-WV-jKl">
+                                        <variation key="widthClass=compact" constant="30"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Gon-2Y-7tG"/>
+                                        <exclude reference="mEv-WV-jKl"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Gon-2Y-7tG"/>
+                                        <include reference="mEv-WV-jKl"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="IG5-FC-NWp" appends="YES" id="rOy-g4-Lyo"/>
                                 </connections>
@@ -737,8 +757,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="04z-Qc-tay" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Gdp-uQ-LJu"/>
-                            <constraint firstItem="04z-Qc-tay" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="eWp-qo-RNB"/>
+                            <constraint firstItem="04z-Qc-tay" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Gdp-uQ-LJu">
+                                <variation key="widthClass=compact" constant="4"/>
+                            </constraint>
+                            <constraint firstItem="04z-Qc-tay" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="eWp-qo-RNB">
+                                <variation key="widthClass=compact" constant="4"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -799,7 +823,7 @@
     </scenes>
     <resources>
         <image name="ScanQRcode" width="25" height="25"/>
-        <image name="flashlight" width="25" height="25"/>
+        <image name="flashlightOff" width="18" height="26"/>
         <image name="info" width="25" height="25"/>
         <image name="tickets" width="25" height="25"/>
     </resources>
