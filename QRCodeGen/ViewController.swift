@@ -34,8 +34,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
 
         super.viewDidLoad()
-        
-
     }
     
 //    deinit {
@@ -185,6 +183,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let focusPoint = CGPointMake(
             tapPoint.x / self.view.bounds.size.width,
             tapPoint.y / self.view.bounds.size.height)
+      
         performFocusAnimation(tapPoint)
         do {
             try captureDevice.lockForConfiguration()
@@ -454,6 +453,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         deleteCaptureSession ()
         videoPreviewLayer!.removeFromSuperlayer()
+        
+        flashlight.image = UIImage(named: "flashlightOff")
         
         // анимация flashlight
         self.flashlight.transform = CGAffineTransformMakeScale(0.0, 0.0)

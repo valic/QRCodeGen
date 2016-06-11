@@ -69,8 +69,16 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         
         // Do any additional setup after loading the view.
         
+    //    self.imgQRCode.transform = CGAffineTransformMakeScale(0.0, 0.0)
+        
         self.navigationItem.title = ""
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        // анимация
+       UIView.animateWithDuration(0.9, delay: 0, options: [], animations: {self.imgQRCode.transform = CGAffineTransformIdentity}, completion: nil)
+   }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -119,6 +127,16 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
         return dateFormatter.stringFromDate(date)
     }
+
+    @IBAction func tapImageQR(sender: AnyObject) {
+        
+       // self.imgQRCode.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        imgQRCode.frame = CGRect(x: screenSize.width/2-(screenSize.width*0.9/2), y: screenSize.height/2-(screenSize.width*0.9/2), width: screenSize.width*0.9, height: screenSize.width*0.9)
+        
+    }
+
 
     
 //    func userSwipedFromEdge(sender: UIScreenEdgePanGestureRecognizer) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RCx-I1-mOk">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -264,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjv-N6-gmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787.5" y="-93"/>
+            <point key="canvasLocation" x="786" y="-42"/>
         </scene>
         <!--Ticket Info-->
         <scene sceneID="F6P-7M-1SW">
@@ -411,25 +412,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yDZ-Fv-kYb">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="AdD-dF-7Yq"/>
-                                    <constraint firstAttribute="height" constant="280" id="FtR-Nf-6Uy"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="AdD-dF-7Yq"/>
-                                        <exclude reference="FtR-Nf-6Uy"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="AdD-dF-7Yq"/>
-                                        <include reference="FtR-Nf-6Uy"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msj-lI-OIh">
                                 <rect key="frame" x="163" y="203" width="137" height="21"/>
                                 <constraints>
@@ -469,6 +451,33 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDZ-Fv-kYb">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="WU4-C5-cfV">
+                                        <variation key="widthClass=compact" constant="200"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="100" id="emU-Xl-hyx">
+                                        <variation key="widthClass=compact" constant="200"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WU4-C5-cfV"/>
+                                        <exclude reference="emU-Xl-hyx"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="WU4-C5-cfV"/>
+                                        <include reference="emU-Xl-hyx"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Y2f-SM-Dcf" appends="YES" id="92l-30-XbJ"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -476,11 +485,14 @@
                             <constraint firstItem="9hk-2o-yEL" firstAttribute="leading" secondItem="IHy-lg-a7F" secondAttribute="trailing" constant="8" id="7kl-Kh-Jf1"/>
                             <constraint firstItem="Msj-lI-OIh" firstAttribute="leading" secondItem="zH3-nx-XhR" secondAttribute="trailing" constant="8" id="8ZL-DZ-QdX"/>
                             <constraint firstItem="Tn9-vr-2YV" firstAttribute="leading" secondItem="YEt-X0-7iD" secondAttribute="leadingMargin" id="AZr-8y-KS7"/>
+                            <constraint firstItem="yDZ-Fv-kYb" firstAttribute="leading" secondItem="YEt-X0-7iD" secondAttribute="leadingMargin" constant="10" id="BVf-ku-FjB"/>
                             <constraint firstItem="zH3-nx-XhR" firstAttribute="leading" secondItem="YEt-X0-7iD" secondAttribute="leadingMargin" id="BtE-PX-h7q"/>
-                            <constraint firstItem="yDZ-Fv-kYb" firstAttribute="centerX" secondItem="YEt-X0-7iD" secondAttribute="centerX" id="DGz-bX-rmF"/>
                             <constraint firstItem="RZ3-od-NjB" firstAttribute="centerX" secondItem="vnF-Hp-kvU" secondAttribute="centerX" id="EGX-wy-BnP"/>
                             <constraint firstItem="JpV-Ve-UC0" firstAttribute="trailing" secondItem="YEt-X0-7iD" secondAttribute="trailingMargin" id="GRT-wf-TkD"/>
                             <constraint firstItem="Msj-lI-OIh" firstAttribute="top" secondItem="JpV-Ve-UC0" secondAttribute="bottom" constant="8" id="J6C-DX-iMj"/>
+                            <constraint firstItem="yDZ-Fv-kYb" firstAttribute="leading" secondItem="YEt-X0-7iD" secondAttribute="leading" constant="23" id="J9i-Mw-ARi">
+                                <variation key="widthClass=compact" constant="15"/>
+                            </constraint>
                             <constraint firstItem="9hk-2o-yEL" firstAttribute="top" secondItem="Msj-lI-OIh" secondAttribute="bottom" constant="8" id="Jzm-9e-drB">
                                 <variation key="widthClass=compact" constant="5"/>
                             </constraint>
@@ -510,8 +522,9 @@
                                 <variation key="widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="DAS-gw-S6u" firstAttribute="top" secondItem="yDZ-Fv-kYb" secondAttribute="bottom" constant="10" id="bqr-he-nfi">
-                                <variation key="widthClass=compact" constant="8"/>
+                                <variation key="widthClass=compact" constant="5"/>
                             </constraint>
+                            <constraint firstItem="yDZ-Fv-kYb" firstAttribute="centerX" secondItem="YEt-X0-7iD" secondAttribute="centerX" id="eVB-Ri-mAB"/>
                             <constraint firstItem="CMY-1F-sXb" firstAttribute="top" secondItem="eVr-PU-ZBb" secondAttribute="bottom" constant="8" id="hlX-nP-03E">
                                 <variation key="widthClass=compact" constant="5"/>
                             </constraint>
@@ -559,10 +572,10 @@
                                 <exclude reference="vnF-Hp-kvU"/>
                                 <exclude reference="RZ3-od-NjB"/>
                                 <exclude reference="3gt-re-MHA"/>
-                                <exclude reference="yDZ-Fv-kYb"/>
                                 <exclude reference="mW5-7b-qsP"/>
                                 <exclude reference="c6m-og-5ko"/>
                                 <exclude reference="CMY-1F-sXb"/>
+                                <exclude reference="yDZ-Fv-kYb"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="7kl-Kh-Jf1"/>
@@ -587,8 +600,10 @@
                                 <exclude reference="pdx-tN-0lV"/>
                                 <exclude reference="BtE-PX-h7q"/>
                                 <exclude reference="p18-W0-59f"/>
-                                <exclude reference="DGz-bX-rmF"/>
+                                <exclude reference="BVf-ku-FjB"/>
+                                <exclude reference="J9i-Mw-ARi"/>
                                 <exclude reference="LoE-Gh-Lob"/>
+                                <exclude reference="eVB-Ri-mAB"/>
                                 <exclude reference="LcT-K6-TN9"/>
                                 <exclude reference="ud9-v7-Wsf"/>
                                 <exclude reference="hlX-nP-03E"/>
@@ -625,10 +640,10 @@
                                 <include reference="vnF-Hp-kvU"/>
                                 <include reference="RZ3-od-NjB"/>
                                 <include reference="3gt-re-MHA"/>
-                                <include reference="yDZ-Fv-kYb"/>
                                 <include reference="mW5-7b-qsP"/>
                                 <include reference="c6m-og-5ko"/>
                                 <include reference="CMY-1F-sXb"/>
+                                <include reference="yDZ-Fv-kYb"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="7kl-Kh-Jf1"/>
@@ -653,8 +668,10 @@
                                 <include reference="pdx-tN-0lV"/>
                                 <include reference="BtE-PX-h7q"/>
                                 <include reference="p18-W0-59f"/>
-                                <include reference="DGz-bX-rmF"/>
+                                <exclude reference="BVf-ku-FjB"/>
+                                <exclude reference="J9i-Mw-ARi"/>
                                 <include reference="LoE-Gh-Lob"/>
+                                <include reference="eVB-Ri-mAB"/>
                                 <include reference="LcT-K6-TN9"/>
                                 <include reference="ud9-v7-Wsf"/>
                                 <include reference="hlX-nP-03E"/>
@@ -692,8 +709,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0w-7Z-fQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Y2f-SM-Dcf">
+                    <connections>
+                        <action selector="tapImageQR:" destination="UTk-8Q-zoa" id="OnW-8I-ebe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1503" y="-93"/>
+            <point key="canvasLocation" x="1504.5" y="-42"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nzt-gj-GYi">
@@ -727,7 +749,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView alpha="0.75" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flashlightOff" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04z-Qc-tay">
+                            <imageView alpha="0.75" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flashlightOff" translatesAutoresizingMaskIntoConstraints="NO" id="04z-Qc-tay">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <gestureRecognizers/>
                                 <constraints>
