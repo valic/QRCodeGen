@@ -24,8 +24,8 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     var seat = ""
     var surnameAndName = ""
     var cost:Float = 0.0
-    var dateTimeDep = NSDate()
-    var dateTimeDes = NSDate()
+    var dateTimeDep = Date()
+    var dateTimeDes = Date()
     var ticketID = ""
     
     let moc = DataController().managedObjectContext
@@ -46,7 +46,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         fetch()
         //  fetchingFromCoreData ()
@@ -55,23 +55,23 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
 
     
     // MARK:  UITextFieldDelegate Methods
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tickets.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! TicketTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! TicketTableViewCell
 
-        let person = tickets[indexPath.row]
-        cell.departureLabel!.text = stringRemoveRange10((person.valueForKey("departure") as? String)!)
-        cell.destinationLabel!.text = stringRemoveRange10((person.valueForKey("destination") as? String)!)
-        let dateTimeDep = person.valueForKey("dateTimeDep") as! NSDate
-        let dateTimeDes = person.valueForKey("dateTimeDes") as! NSDate
+        let person = tickets[(indexPath as NSIndexPath).row]
+        cell.departureLabel!.text = stringRemoveRange10((person.value(forKey: "departure") as? String)!)
+        cell.destinationLabel!.text = stringRemoveRange10((person.value(forKey: "destination") as? String)!)
+        let dateTimeDep = person.value(forKey: "dateTimeDep") as! Date
+        let dateTimeDes = person.value(forKey: "dateTimeDes") as! Date
         //print(dateTimeDes)
         cell.dateTimeDepLabel!.text = dateToString(dateTimeDep)
        // cell.userInteractionEnabled = true
@@ -91,8 +91,8 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
     func fetch() {
         
         do {
-            let request = NSFetchRequest(entityName: "Tickets")
-            tickets = try moc.executeFetchRequest(request) as! [Tickets]
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tickets")
+            tickets = try moc.fetch(request) as! [Tickets]
         
         } catch let error as NSError {
             // failure
@@ -101,10 +101,10 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
        self.tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
           
-        moc.deleteObject(tickets[indexPath.row])
+        moc.delete(tickets[(indexPath as NSIndexPath).row])
             
         do {
             try moc.save()
@@ -112,37 +112,37 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
                 print("failed to clear core data")
                 }
         }
-        self.tickets.removeAtIndex(indexPath.row)
+        self.tickets.remove(at: (indexPath as NSIndexPath).row)
         self.tableView.reloadData()
     }
     
    
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fetch()
         
-        let test = tickets[indexPath.row]
+        let test = tickets[(indexPath as NSIndexPath).row]
                 
-        stringTicket = test.valueForKey("stringTicket") as! String
-        train = test.valueForKey("train") as! String
-        departure = test.valueForKey("departure") as! String
-        destination = test.valueForKey("destination") as! String
-        coach = test.valueForKey("coach") as! String
-        seat = test.valueForKey("seat") as! String
-        surnameAndName = test.valueForKey("surnameAndName") as! String
-        cost = test.valueForKey("cost") as! Float
-        dateTimeDep = test.valueForKey("dateTimeDep") as! NSDate
-        dateTimeDes = test.valueForKey("dateTimeDes") as! NSDate
-        ticketID = test.valueForKey("ticketID") as! String
+        stringTicket = test.value(forKey: "stringTicket") as! String
+        train = test.value(forKey: "train") as! String
+        departure = test.value(forKey: "departure") as! String
+        destination = test.value(forKey: "destination") as! String
+        coach = test.value(forKey: "coach") as! String
+        seat = test.value(forKey: "seat") as! String
+        surnameAndName = test.value(forKey: "surnameAndName") as! String
+        cost = test.value(forKey: "cost") as! Float
+        dateTimeDep = test.value(forKey: "dateTimeDep") as! Date
+        dateTimeDes = test.value(forKey: "dateTimeDes") as! Date
+        ticketID = test.value(forKey: "ticketID") as! String
         
-        self.performSegueWithIdentifier("segueID", sender: nil)
+        self.performSegue(withIdentifier: "segueID", sender: nil)
     }
     
    
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueID" {
-            if let destinationVC = segue.destinationViewController as? TicketInfo {
+            if let destinationVC = segue.destination as? TicketInfo {
                 
                 destinationVC.stringTicket = stringTicket
                 destinationVC.train = train
@@ -159,29 +159,29 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         }
     }
     
-    func stringRemoveRange10 (string: String) -> String {
-        let range  = string.startIndex.advancedBy(10)..<string.endIndex
+    func stringRemoveRange10 (_ string: String) -> String {
+        let range  = string.characters.index(string.startIndex, offsetBy: 10)..<string.endIndex
         return string[range]
     }
     
-    func dateToString (date: NSDate) -> String  {
+    func dateToString (_ date: Date) -> String  {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM HH:mm"
-        return dateFormatter.stringFromDate(date)
+        return dateFormatter.string(from: date)
     }
 
     
-    func isBetweenMyTwoDates(start: NSDate, end: NSDate ) -> Bool {
-        if start.compare(NSDate()) == .OrderedAscending && end.compare(NSDate()) == .OrderedDescending {
+    func isBetweenMyTwoDates(_ start: Date, end: Date ) -> Bool {
+        if start.compare(Date()) == .orderedAscending && end.compare(Date()) == .orderedDescending {
             return true
         }
         return false
     }
     
-    func dateEnd(end: NSDate ) -> Bool {
+    func dateEnd(_ end: Date ) -> Bool {
     //    var dateComparisionResult:NSComparisonResult = currentDate.compare(end)
-        if NSDate().compare(end) == NSComparisonResult.OrderedDescending {
+        if Date().compare(end) == ComparisonResult.orderedDescending {
             
             return true
         }

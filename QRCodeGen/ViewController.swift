@@ -17,7 +17,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var textQR: String?
-    let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+    let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
     @IBOutlet weak var flashlight: UIImageView!
     
     
@@ -30,7 +30,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // Do any additional setup after loading the view, typically from a nib.managedObjectContext
         
         // анимация flashlight
-        self.flashlight.transform = CGAffineTransformMakeScale(0.0, 0.0)
+        self.flashlight.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
         
 
         super.viewDidLoad()
@@ -48,18 +48,18 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
 
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        if status == AVAuthorizationStatus.Authorized {
+        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        if status == AVAuthorizationStatus.authorized {
             // Show camera
             self.initializationCaptureSession ()
-        } else if status == AVAuthorizationStatus.NotDetermined {
+        } else if status == AVAuthorizationStatus.notDetermined {
             // Request permission
             print("Request permission")
 
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted) -> Void in
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted) -> Void in
                 if granted {
                     // Show camera
                     self.initializationCaptureSession ()
@@ -70,24 +70,24 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             // User rejected permission. Ask user to switch it on in the Settings app manually
             //open the settings to allow the user to select if they want to allow for location settings.
             
-            let alert = UIAlertController(title: "Невозможно получить доступ к камере", message: "Сканеру требуется доступ к вашей камере для сканирования кодов. Перейдите в настройки приватности вашего устройства для включения камеры.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Default, handler:nil))
-            alert.addAction(UIAlertAction(title: "Настройки", style: UIAlertActionStyle.Default, handler: {
+            let alert = UIAlertController(title: "Невозможно получить доступ к камере", message: "Сканеру требуется доступ к вашей камере для сканирования кодов. Перейдите в настройки приватности вашего устройства для включения камеры.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler:nil))
+            alert.addAction(UIAlertAction(title: "Настройки", style: UIAlertActionStyle.default, handler: {
                 (alert: UIAlertAction!) in
-                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
             }))
                 
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             
             
             
         }
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         // анимация flashlight
-        UIView.animateWithDuration(0.4, delay: 0, options: [], animations: {self.flashlight.transform = CGAffineTransformIdentity}, completion: nil)    }
+        UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {self.flashlight.transform = CGAffineTransform.identity}, completion: nil)    }
    
 
     func initializationCaptureSession () {
@@ -105,7 +105,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             captureSession?.addOutput(captureMetadataOutput)
             
             // Set delegate and use the default dispatch queue to execute the call back
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             
             // Detect all the supported bar code
             captureMetadataOutput.metadataObjectTypes = supportedBarCodes
@@ -120,13 +120,13 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             // Start video capture
             captureSession?.startRunning()
             
-            let gesture = UITapGestureRecognizer(target: self, action: "tap:")
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.tap(_:)))
             self.view.addGestureRecognizer(gesture)
             
 
             // Move the message label to the top view
             // view.bringSubviewToFront(messageLabel)
-            view.bringSubviewToFront(flashlight)
+            view.bringSubview(toFront: flashlight)
             
             
         } catch {
@@ -178,27 +178,27 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 */
 
 
-    func tap(gesture: UITapGestureRecognizer) {
-        let tapPoint = gesture.locationInView(self.view)
-        let focusPoint = CGPointMake(
-            tapPoint.x / self.view.bounds.size.width,
-            tapPoint.y / self.view.bounds.size.height)
+    func tap(_ gesture: UITapGestureRecognizer) {
+        let tapPoint = gesture.location(in: self.view)
+        let focusPoint = CGPoint(
+            x: tapPoint.x / self.view.bounds.size.width,
+            y: tapPoint.y / self.view.bounds.size.height)
       
         performFocusAnimation(tapPoint)
         do {
-            try captureDevice.lockForConfiguration()
-            if captureDevice.focusPointOfInterestSupported {
+            try captureDevice?.lockForConfiguration()
+            if (captureDevice?.isFocusPointOfInterestSupported)! {
                 //print(focusPoint)
-                captureDevice.focusPointOfInterest = focusPoint
+                captureDevice?.focusPointOfInterest = focusPoint
                 
             }
-            if (captureDevice.isFocusModeSupported(.ContinuousAutoFocus)) {
+            if (captureDevice?.isFocusModeSupported(.continuousAutoFocus))! {
                 
-                captureDevice.focusMode = AVCaptureFocusMode.AutoFocus
+                captureDevice?.focusMode = AVCaptureFocusMode.autoFocus
             }
-            if captureDevice.exposurePointOfInterestSupported {
-                captureDevice.exposurePointOfInterest = focusPoint
-                captureDevice.exposureMode = AVCaptureExposureMode.AutoExpose
+            if (captureDevice?.isExposurePointOfInterestSupported)! {
+                captureDevice?.exposurePointOfInterest = focusPoint
+                captureDevice?.exposureMode = AVCaptureExposureMode.autoExpose
             }
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
@@ -207,36 +207,36 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
         
         
-        captureDevice.unlockForConfiguration()
+        captureDevice?.unlockForConfiguration()
         
         
     }
 
-    private func performFocusAnimation(point: CGPoint) {
+    fileprivate func performFocusAnimation(_ point: CGPoint) {
        
         var newImgThumb : UIImageView
-        newImgThumb = UIImageView(frame:CGRectMake(0, 0, 100, 100))
-        newImgThumb.contentMode = .ScaleAspectFit
+        newImgThumb = UIImageView(frame:CGRect(x: 0, y: 0, width: 100, height: 100))
+        newImgThumb.contentMode = .scaleAspectFit
         newImgThumb.center = point
         newImgThumb.image = UIImage(named: "indicator")!
         view.addSubview(newImgThumb)
         
-        UIView.animateWithDuration(0.5, animations: { _ in
+        UIView.animate(withDuration: 0.5, animations: { _ in
             newImgThumb.alpha = 0
-            }) { _ in
+            }, completion: { _ in
                 newImgThumb.removeFromSuperview()
-        }
+        }) 
        // view.bringSubviewToFront(dot)
        // view.bringSubviewToFront(newImgThumb)
     }
 
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
   
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
-            qrCodeFrameView?.frame = CGRectZero
+            qrCodeFrameView?.frame = CGRect.zero
           print("No barcode/QR code is detected")
             return
         }
@@ -255,21 +255,21 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 if let textQR = textQR {
                  //   print(textQR)
                     
-                    let arrayScanCode = textQR.componentsSeparatedByString("\n")
+                    let arrayScanCode = textQR.components(separatedBy: "\n")
                    
                     if arrayScanCode.count == 20 /*&& arrayScanCode[15] == arrayScanCode[19] */{
                         
                         // create an instance of our managedObjectContext
                         let context = DataController().managedObjectContext
-                        let request = NSFetchRequest(entityName: "Tickets")
+                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tickets")
                         
                         // we set up our entity by selecting the entity and context that we're targeting
-                        let entity = NSEntityDescription.insertNewObjectForEntityForName("Tickets", inManagedObjectContext: context) as! Tickets
+                        let entity = NSEntityDescription.insertNewObject(forEntityName: "Tickets", into: context) as! Tickets
 
                         let predicate = NSPredicate(format: "ticketID == %@", arrayScanCode[15])
                         request.predicate = predicate
                         do {
-                            let results = try context.executeFetchRequest(request) as! [Tickets]
+                            let results = try context.fetch(request) as! [Tickets]
                             
                             
                             if (results.count > 0) {
@@ -348,15 +348,15 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
 
     
-    func clearCoreData(entity:String) {
+    func clearCoreData(_ entity:String) {
         let moc = DataController().managedObjectContext
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = NSEntityDescription.entityForName(entity, inManagedObjectContext: moc)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: entity, in: moc)
         fetchRequest.includesPropertyValues = false
         do {
-            if let results = try moc.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+            if let results = try moc.fetch(fetchRequest) as? [NSManagedObject] {
                 for result in results {
-                    moc.deleteObject(result)
+                    moc.delete(result)
                 }
                 
                 try moc.save()
@@ -366,32 +366,32 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    func stringToDate (stringData: String) -> NSDate  {
+    func stringToDate (_ stringData: String) -> Date  {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat  = "dd.MM HH:mm" //21.11 20:01
-        dateFormatter.timeZone = NSTimeZone(name: "Europe/Kiev")
-        dateFormatter.defaultDate = NSDate()
-        let date = dateFormatter.dateFromString(stringData)
+        dateFormatter.timeZone = TimeZone(identifier: "Europe/Kiev")
+        dateFormatter.defaultDate = Date()
+        let date = dateFormatter.date(from: stringData)
         
-        let dayComponenet = NSDateComponents()
+        var dayComponenet = DateComponents()
         dayComponenet.day = 30
         
-        let theCalendar = NSCalendar.currentCalendar()
-        let nextDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: NSDate(), options: [])
+        let theCalendar = Calendar.current
+        let nextDate = (theCalendar as NSCalendar).date(byAdding: dayComponenet, to: Date(), options: [])
        // print(nextDate)
         
-        if date!.compare(nextDate!) == .OrderedDescending {
+        if date!.compare(nextDate!) == .orderedDescending {
             // Текущая дата больше конечной даты
             
-            let dayComponenet = NSDateComponents()
+            var dayComponenet = DateComponents()
             dayComponenet.year = -1
             
-            let theCalendar = NSCalendar.currentCalendar()
-            dateFormatter.defaultDate = theCalendar.dateByAddingComponents(dayComponenet, toDate: NSDate(), options: [])
+            let theCalendar = Calendar.current
+            dateFormatter.defaultDate = (theCalendar as NSCalendar).date(byAdding: dayComponenet, to: Date(), options: [])
        // print(dateFormatter.dateFromString(stringData)!)
-            return dateFormatter.dateFromString(stringData)!
+            return dateFormatter.date(from: stringData)!
         }
         else {
             return date!
@@ -426,21 +426,21 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 */
     }
     
-    func alertCaptureSession(messageText: String)
+    func alertCaptureSession(_ messageText: String)
     {
-            let alertController = UIAlertController(title: title, message: messageText, preferredStyle:UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+            let alertController = UIAlertController(title: title, message: messageText, preferredStyle:UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
                 { action -> Void in
                     // Put your code here
                     self.initializationCaptureSession()
                 })
             //self.captureSession!.startRunning()
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
     }
     
-    func dateStart(end: NSDate ) -> Bool {
+    func dateStart(_ end: Date ) -> Bool {
         //    var dateComparisionResult:NSComparisonResult = currentDate.compare(end)
-        if NSDate().compare(end) == NSComparisonResult.OrderedDescending {
+        if Date().compare(end) == ComparisonResult.orderedDescending {
             
             return true
         }
@@ -448,7 +448,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         deleteCaptureSession ()
@@ -457,35 +457,35 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         flashlight.image = UIImage(named: "flashlightOff")
         
         // анимация flashlight
-        self.flashlight.transform = CGAffineTransformMakeScale(0.0, 0.0)
+        self.flashlight.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
     }
     
-    @IBAction func flashlightAction(sender: AnyObject) {
+    @IBAction func flashlightAction(_ sender: AnyObject) {
         toggleFlash(0.5)
     }
     
     
-    func toggleFlash(input: Float) {
-        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        if (device.hasTorch) {
+    func toggleFlash(_ input: Float) {
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if (device?.hasTorch)! {
             do {
-                try device.lockForConfiguration()
+                try device?.lockForConfiguration()
                 //device.torchMode = AVCaptureTorchMode.On
                 //try device.setTorchModeOnWithLevel(input)
                 
-                if (device.torchMode == AVCaptureTorchMode.On) {
-                    device.torchMode = AVCaptureTorchMode.Off
+                if (device?.torchMode == AVCaptureTorchMode.on) {
+                    device?.torchMode = AVCaptureTorchMode.off
                     flashlight.image = UIImage(named: "flashlightOff")
                 } else {
                     do {
-                        try device.setTorchModeOnWithLevel(input)
+                        try device?.setTorchModeOnWithLevel(input)
                         flashlight.image = UIImage(named: "flashlightOn")
                     } catch {
                         print(error)
                     }
                 }
                 
-                device.unlockForConfiguration()
+                device?.unlockForConfiguration()
             } catch {
                 print(error)
             }

@@ -17,8 +17,8 @@ extension Tickets {
     @NSManaged var train: String?
     @NSManaged var departure: String?
     @NSManaged var destination: String?
-    @NSManaged var dateTimeDep: NSDate?
-    @NSManaged var dateTimeDes: NSDate?
+    @NSManaged var dateTimeDep: Date?
+    @NSManaged var dateTimeDes: Date?
     @NSManaged var coach: String?
     @NSManaged var seat: String?
     @NSManaged var surnameAndName: String?
