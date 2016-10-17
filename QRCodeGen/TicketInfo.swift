@@ -128,14 +128,14 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         return dateFormatter.string(from: date)
     }
 
-    @IBAction func tapImageQR(_ sender: AnyObject) {
+   // @IBAction func tapImageQR(_ sender: AnyObject) {
         
        // self.imgQRCode.transform = CGAffineTransformMakeScale(1.0, 1.0)
-        let screenSize: CGRect = UIScreen.main.bounds
+      //  let screenSize: CGRect = UIScreen.main.bounds
         
-        imgQRCode.frame = CGRect(x: screenSize.width/2-(screenSize.width*0.9/2), y: screenSize.height/2-(screenSize.width*0.9/2), width: screenSize.width*0.9, height: screenSize.width*0.9)
+      //  imgQRCode.frame = CGRect(x: screenSize.width/2-(screenSize.width*0.9/2), y: screenSize.height/2-(screenSize.width*0.9/2), width: screenSize.width*0.9, height: screenSize.width*0.9)
         
-    }
+  //  }
 
 
     
