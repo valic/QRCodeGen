@@ -1,0 +1,69 @@
+
+/* Class = "UITabBarItem"; title = "tickets"; ObjectID = "1r6-Rk-2uU"; */
+"1r6-Rk-2uU.title" = "tickets";
+
+/* Class = "UILabel"; text = "КУДИ"; ObjectID = "4bQ-up-hzW"; */
+"4bQ-up-hzW.text" = "КУДИ";
+
+/* Class = "UILabel"; text = "this is help"; ObjectID = "4eH-TK-0zR"; */
+"4eH-TK-0zR.text" = "this is help";
+
+/* Class = "UILabel"; text = "ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ"; ObjectID = "721-6i-n9U"; */
+"721-6i-n9U.text" = "ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ";
+
+/* Class = "UILabel"; text = "ЗВІДКИ"; ObjectID = "84l-gG-Cku"; */
+"84l-gG-Cku.text" = "ЗВІДКИ";
+
+/* Class = "UILabel"; text = "МІСЦЕ"; ObjectID = "9hk-2o-yEL"; */
+"9hk-2o-yEL.text" = "МІСЦЕ";
+
+/* Class = "UILabel"; text = "МИКОЛАЇВ ПАС"; ObjectID = "CGj-iH-GYU"; */
+"CGj-iH-GYU.text" = "МИКОЛАЇВ ПАС";
+
+/* Class = "UILabel"; text = "ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ"; ObjectID = "F0P-Ma-EVv"; */
+"F0P-Ma-EVv.text" = "ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ";
+
+/* Class = "UITabBarItem"; title = "scan"; ObjectID = "G3u-E0-M5Q"; */
+"G3u-E0-M5Q.title" = "scan";
+
+/* Class = "UILabel"; text = "ВАГОН"; ObjectID = "IHy-lg-a7F"; */
+"IHy-lg-a7F.text" = "ВАГОН";
+
+/* Class = "UILabel"; text = "МИКОЛАЇВ ПАС"; ObjectID = "JpV-Ve-UC0"; */
+"JpV-Ve-UC0.text" = "МИКОЛАЇВ ПАС";
+
+/* Class = "UILabel"; text = "ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ"; ObjectID = "Msj-lI-OIh"; */
+"Msj-lI-OIh.text" = "ДНІПРОПЕТРОВСЬК ГОЛОВНИЙ";
+
+/* Class = "UITabBarItem"; title = "info"; ObjectID = "RoZ-gc-Nqy"; */
+"RoZ-gc-Nqy.title" = "info";
+
+/* Class = "UILabel"; text = "ЗВІДКИ"; ObjectID = "Tn9-vr-2YV"; */
+"Tn9-vr-2YV.text" = "ЗВІДКИ";
+
+/* Class = "UILabel"; text = "ПРИБУТТЯ"; ObjectID = "c6m-og-5ko"; */
+"c6m-og-5ko.text" = "ПРИБУТТЯ";
+
+/* Class = "UILabel"; text = "ВАРТІСТЬ"; ObjectID = "eVr-PU-ZBb"; */
+"eVr-PU-ZBb.text" = "ВАРТІСТЬ";
+
+/* Class = "UILabel"; text = "ВІДПРАВЛЕННЯ"; ObjectID = "hmO-dY-hqW"; */
+"hmO-dY-hqW.text" = "ВІДПРАВЛЕННЯ";
+
+/* Class = "UILabel"; text = "ПОЇЗД"; ObjectID = "hpd-ZV-YlB"; */
+"hpd-ZV-YlB.text" = "ПОЇЗД";
+
+/* Class = "UIBarButtonItem"; title = "Список билетов"; ObjectID = "jWw-4j-VMR"; */
+"jWw-4j-VMR.title" = "Список билетов";
+
+/* Class = "UILabel"; text = "ticketID"; ObjectID = "mW5-7b-qsP"; */
+"mW5-7b-qsP.text" = "ticketID";
+
+/* Class = "UINavigationItem"; title = "Билеты"; ObjectID = "u2R-89-UXw"; */
+"u2R-89-UXw.title" = "Билеты";
+
+/* Class = "UILabel"; text = "ВІДПРАВЛЕННЯ"; ObjectID = "vnF-Hp-kvU"; */
+"vnF-Hp-kvU.text" = "ВІДПРАВЛЕННЯ";
+
+/* Class = "UILabel"; text = "КУДИ"; ObjectID = "zH3-nx-XhR"; */
+"zH3-nx-XhR.text" = "КУДИ";
