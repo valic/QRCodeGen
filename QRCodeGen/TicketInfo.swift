@@ -13,16 +13,12 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     
     
     
-    @IBOutlet weak var departureLabel: UILabel!
-    @IBOutlet weak var destinationLabel: UILabel!
+
     @IBOutlet weak var imgQRCode: UIImageView!
-    @IBOutlet weak var trainLabel: UILabel!
-    @IBOutlet weak var coachLabel: UILabel!
-    @IBOutlet weak var seatLabel: UILabel!
-    @IBOutlet weak var costLabel: UILabel!
-    @IBOutlet weak var dateTimeDepLabel: UILabel!
-    @IBOutlet weak var dateTimeDesLabel: UILabel!
     @IBOutlet weak var ticketIdLabel: UILabel!
+    @IBOutlet weak var seatLabel: UILabel!
+    @IBOutlet weak var surnameAndNameLabel: UILabel!
+
     
     
     
@@ -51,21 +47,17 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
         edgeGestureRecognizer.edges = UIRectEdge.left
         edgeGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(edgeGestureRecognizer)
-        
-        departureLabel.text = stringRemoveRange10(departure)
-        destinationLabel.text = stringRemoveRange10(destination)
-        
-        trainLabel.text = (String((train as NSString).integerValue))
-        coachLabel.text = coach
-        seatLabel.text = (String((seat as NSString).integerValue))
-        let nf = NumberFormatter()
-        nf.numberStyle = .decimal
-        costLabel.text = nf.string(from: NSNumber(value: cost))! + " \u{20B4}"
-        
-        dateTimeDepLabel.text = dateToString(dateTimeDep)
-        dateTimeDesLabel.text = dateToString(dateTimeDes)
-        ticketIdLabel.text = ticketID
+
+      //  seatLabel.text = (String((seat as NSString).integerValue))
+      //  let nf = NumberFormatter()
+     //   nf.numberStyle = .decimal
+
+        ticketIdLabel?.text = ticketID
+        seatLabel?.text = seat
+        surnameAndNameLabel?.text = surnameAndName
         generationQR(stringTicket)
+        
+        
         
         // Do any additional setup after loading the view.
         
@@ -77,7 +69,7 @@ class TicketInfo: UIViewController,UIGestureRecognizerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         // анимация
-       UIView.animate(withDuration: 0.9, delay: 0, options: [], animations: {self.imgQRCode.transform = CGAffineTransform.identity}, completion: nil)
+      // UIView.animate(withDuration: 0.9, delay: 0, options: [], animations: {self.imgQRCode.transform = CGAffineTransform.identity}, completion: nil)
    }
 
     override func didReceiveMemoryWarning() {
