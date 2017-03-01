@@ -74,13 +74,13 @@
                                                         <constraint firstAttribute="width" constant="16" id="KTX-yx-3Nj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQf-0K-9EE">
-                                                    <rect key="frame" x="32" y="6.5" width="280" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="пункт прибытия" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQf-0K-9EE">
+                                                    <rect key="frame" x="74" y="8" width="246" height="16"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="grJ-8h-6bc">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="grJ-8h-6bc">
                                                     <rect key="frame" x="8" y="29" width="304" height="16"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="Train" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-cZ-kxE">
@@ -90,26 +90,45 @@
                                                                 <constraint firstAttribute="height" constant="16" id="xEU-TD-AxT"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поезд" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONc-P5-hmq">
-                                                            <rect key="frame" x="21" y="0.0" width="126" height="16"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поезд" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONc-P5-hmq">
+                                                            <rect key="frame" x="21" y="0.0" width="77" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Railroad Car" translatesAutoresizingMaskIntoConstraints="NO" id="qie-B1-2Bz">
-                                                            <rect key="frame" x="157" y="0.0" width="16" height="16"/>
+                                                            <rect key="frame" x="103" y="0.0" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="16" id="0vk-RF-1Tr"/>
+                                                                <constraint firstAttribute="height" constant="16" id="Kkm-dd-Obv"/>
+                                                            </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вагон" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDH-Ww-T4p">
-                                                            <rect key="frame" x="178" y="0.0" width="126" height="16"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вагон" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDH-Ww-T4p">
+                                                            <rect key="frame" x="124" y="0.0" width="77" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flight Seat" translatesAutoresizingMaskIntoConstraints="NO" id="Y5U-jQ-B0o">
+                                                            <rect key="frame" x="206" y="0.0" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="16" id="bwg-Ax-7Pu"/>
+                                                                <constraint firstAttribute="height" constant="16" id="ij5-VZ-hwd"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="место" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShT-my-Bla">
+                                                            <rect key="frame" x="227" y="0.0" width="77" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="rDH-Ww-T4p" firstAttribute="leading" secondItem="qie-B1-2Bz" secondAttribute="trailing" constant="5" id="JMw-hv-9Wv"/>
+                                                        <constraint firstItem="ShT-my-Bla" firstAttribute="leading" secondItem="Y5U-jQ-B0o" secondAttribute="trailing" constant="5" id="Aoe-tQ-7gX"/>
+                                                        <constraint firstItem="Y5U-jQ-B0o" firstAttribute="leading" secondItem="rDH-Ww-T4p" secondAttribute="trailing" constant="5" id="GsR-a2-Y5b"/>
                                                         <constraint firstItem="ONc-P5-hmq" firstAttribute="leading" secondItem="nzK-cZ-kxE" secondAttribute="trailing" constant="5" id="SV1-XG-I44"/>
-                                                        <constraint firstItem="qie-B1-2Bz" firstAttribute="leading" secondItem="ONc-P5-hmq" secondAttribute="trailing" constant="10" id="wso-kW-eT1"/>
+                                                        <constraint firstItem="rDH-Ww-T4p" firstAttribute="leading" secondItem="qie-B1-2Bz" secondAttribute="trailing" constant="5" id="YQd-RE-KAl"/>
+                                                        <constraint firstItem="qie-B1-2Bz" firstAttribute="leading" secondItem="ONc-P5-hmq" secondAttribute="trailing" constant="5" id="xIE-gW-P4V"/>
                                                     </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Journey" translatesAutoresizingMaskIntoConstraints="NO" id="Bup-JK-A3j">
@@ -194,17 +213,28 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzk-3u-zRi">
+                                                    <rect key="frame" x="29" y="9.5" width="45" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="BpA-QA-dxm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="TQf-0K-9EE" secondAttribute="trailing" id="0dH-ci-Hsd"/>
                                                 <constraint firstItem="Bup-JK-A3j" firstAttribute="top" secondItem="grJ-8h-6bc" secondAttribute="bottom" constant="5" id="6Gq-9p-aey"/>
-                                                <constraint firstItem="TQf-0K-9EE" firstAttribute="trailing" secondItem="7ct-AC-jDc" secondAttribute="trailingMargin" id="6sZ-0j-zwD"/>
                                                 <constraint firstItem="9Mn-vJ-9b9" firstAttribute="centerY" secondItem="Bup-JK-A3j" secondAttribute="centerY" id="9yv-Nk-dod"/>
-                                                <constraint firstItem="TQf-0K-9EE" firstAttribute="centerY" secondItem="ySD-E4-w7F" secondAttribute="centerY" id="MX6-4S-N1W"/>
+                                                <constraint firstItem="TQf-0K-9EE" firstAttribute="leading" secondItem="Dzk-3u-zRi" secondAttribute="trailing" id="MBf-NA-yKk"/>
                                                 <constraint firstItem="grJ-8h-6bc" firstAttribute="leading" secondItem="7ct-AC-jDc" secondAttribute="leadingMargin" id="Nie-cV-9Rw"/>
+                                                <constraint firstItem="Dzk-3u-zRi" firstAttribute="leading" secondItem="ySD-E4-w7F" secondAttribute="trailing" constant="5" id="PQN-Q8-HVi"/>
                                                 <constraint firstItem="ySD-E4-w7F" firstAttribute="top" secondItem="7ct-AC-jDc" secondAttribute="topMargin" id="XsX-bM-CRa"/>
-                                                <constraint firstItem="TQf-0K-9EE" firstAttribute="leading" secondItem="ySD-E4-w7F" secondAttribute="trailing" constant="8" symbolic="YES" id="cJJ-Y8-zZ3"/>
                                                 <constraint firstItem="ySD-E4-w7F" firstAttribute="leading" secondItem="7ct-AC-jDc" secondAttribute="leadingMargin" id="ct5-Js-zSN"/>
                                                 <constraint firstItem="9Mn-vJ-9b9" firstAttribute="leading" secondItem="Bup-JK-A3j" secondAttribute="trailing" constant="9" id="iC2-sv-06C"/>
+                                                <constraint firstItem="TQf-0K-9EE" firstAttribute="centerY" secondItem="ySD-E4-w7F" secondAttribute="centerY" id="l1y-68-v4n"/>
+                                                <constraint firstItem="Dzk-3u-zRi" firstAttribute="centerY" secondItem="ySD-E4-w7F" secondAttribute="centerY" id="mtB-PM-a7k"/>
                                                 <constraint firstItem="Bup-JK-A3j" firstAttribute="leading" secondItem="7ct-AC-jDc" secondAttribute="leadingMargin" id="pzp-qa-vQw"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="9Mn-vJ-9b9" secondAttribute="trailing" id="trQ-yz-DNy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="grJ-8h-6bc" secondAttribute="trailing" id="u8B-E0-jnI"/>
@@ -218,8 +248,11 @@
                                             <outlet property="dateTimeDepLabelTop" destination="TQf-0K-9EE" id="p9k-VO-8Ep"/>
                                             <outlet property="departureLabel" destination="prA-2W-egX" id="je5-AU-MgU"/>
                                             <outlet property="destinationLabel" destination="rfI-WG-LeW" id="yY0-5G-74V"/>
+                                            <outlet property="destinationLabelTop" destination="TQf-0K-9EE" id="s7n-1N-T9A"/>
                                             <outlet property="railroadCar" destination="rDH-Ww-T4p" id="h3f-O7-rmZ"/>
+                                            <outlet property="seatLabel" destination="ShT-my-Bla" id="HcP-af-9lA"/>
                                             <outlet property="timeDepLabel" destination="Cqk-n0-Z8y" id="5xm-Us-SWS"/>
+                                            <outlet property="timeDepLabelTop" destination="Dzk-3u-zRi" id="GFg-1J-87g"/>
                                             <outlet property="timeDesLabel" destination="Uek-tK-etP" id="85X-RE-hX7"/>
                                             <outlet property="train" destination="ONc-P5-hmq" id="8Wv-57-cyl"/>
                                         </connections>
@@ -551,6 +584,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Flight Seat" width="64" height="64"/>
         <image name="Journey" width="50" height="50"/>
         <image name="Railroad Car" width="16" height="16"/>
         <image name="ScanQRcode" width="25" height="25"/>

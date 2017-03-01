@@ -14,6 +14,8 @@ class TicketTableViewCell: UITableViewCell {
 
 
 
+    @IBOutlet weak var timeDepLabelTop: UILabel!
+    @IBOutlet weak var destinationLabelTop: UILabel!
     @IBOutlet weak var dateTimeDepLabelTop: UILabel!
     @IBOutlet weak var train: UILabel!
     @IBOutlet weak var railroadCar: UILabel!
@@ -23,6 +25,7 @@ class TicketTableViewCell: UITableViewCell {
     @IBOutlet weak var timeDesLabel: UILabel!
     @IBOutlet weak var dateDesLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var seatLabel: UILabel!
 
 
    

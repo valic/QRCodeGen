@@ -69,9 +69,10 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
 
         let person = tickets[(indexPath as NSIndexPath).row]
         
-        cell.dateTimeDepLabelTop?.text = person.value(forKey: "dateTimeDep") as? String
-        cell.train?.text =  String(describing: (person.value(forKey: "train") as! NSString).integerValue)      
+        cell.destinationLabelTop?.text = stringRemoveRange10((person.value(forKey: "destination") as? String)!)
+        cell.train?.text =  person.value(forKey: "train") as? String
         cell.railroadCar?.text = person.value(forKey: "coach") as? String
+        cell.seatLabel?.text =  person.value(forKey: "seat") as? String
         
         let dateTimeDep  = person.value(forKey: "dateTimeDep") as? Date
         let dateTimeDes  = person.value(forKey: "dateTimeDes") as? Date
@@ -80,6 +81,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         dateFormatter.dateFormat = "hh:mm"
         dateFormatter.locale = Locale.init(identifier: "en_GB")
         
+        cell.timeDepLabelTop?.text = dateFormatter.string(from: dateTimeDep!)
         cell.timeDepLabel?.text = dateFormatter.string(from: dateTimeDep!)
         cell.timeDesLabel?.text = dateFormatter.string(from: dateTimeDes!)
         
@@ -99,7 +101,7 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         
         
         if (dateEnd(dateTimeDes!) == true) {
-        cell.contentView.alpha = 0.75
+        cell.contentView.alpha = 1.00
             }
         else {
             print("Дата в билете актуальна")
