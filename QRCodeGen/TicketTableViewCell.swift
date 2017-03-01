@@ -12,10 +12,20 @@ import UIKit
 class TicketTableViewCell: UITableViewCell {
 
 
+
+
+    @IBOutlet weak var dateTimeDepLabelTop: UILabel!
+    @IBOutlet weak var train: UILabel!
+    @IBOutlet weak var railroadCar: UILabel!
+    @IBOutlet weak var timeDepLabel: UILabel!
+    @IBOutlet weak var dateDepLabel: UILabel!
     @IBOutlet weak var departureLabel: UILabel!
+    @IBOutlet weak var timeDesLabel: UILabel!
+    @IBOutlet weak var dateDesLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
-    @IBOutlet weak var dateTimeDepLabel: UILabel!
-    
+
+
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

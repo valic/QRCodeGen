@@ -68,16 +68,37 @@ class ViewControllerTable: UIViewController,UITableViewDelegate,UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! TicketTableViewCell
 
         let person = tickets[(indexPath as NSIndexPath).row]
+        
+        cell.dateTimeDepLabelTop?.text = person.value(forKey: "dateTimeDep") as? String
+        cell.train?.text =  String(describing: (person.value(forKey: "train") as! NSString).integerValue)      
+        cell.railroadCar?.text = person.value(forKey: "coach") as? String
+        
+        let dateTimeDep  = person.value(forKey: "dateTimeDep") as? Date
+        let dateTimeDes  = person.value(forKey: "dateTimeDes") as? Date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        
+        cell.timeDepLabel?.text = dateFormatter.string(from: dateTimeDep!)
+        cell.timeDesLabel?.text = dateFormatter.string(from: dateTimeDes!)
+        
+        dateFormatter.dateFormat = "dd.MM"
+        cell.dateDepLabel?.text = dateFormatter.string(from: dateTimeDep!)
+        cell.dateDesLabel?.text = dateFormatter.string(from: dateTimeDes!)
+        
+        
         cell.departureLabel!.text = stringRemoveRange10((person.value(forKey: "departure") as? String)!)
         cell.destinationLabel!.text = stringRemoveRange10((person.value(forKey: "destination") as? String)!)
-        let dateTimeDep = person.value(forKey: "dateTimeDep") as! Date
-        let dateTimeDes = person.value(forKey: "dateTimeDes") as! Date
+ 
+        
+        
         //print(dateTimeDes)
-        cell.dateTimeDepLabel!.text = dateToString(dateTimeDep)
+       // cell.dateTimeDepLabel!.text = dateToString(dateTimeDep)
        // cell.userInteractionEnabled = true
         
         
-        if (dateEnd(dateTimeDes) == true) {
+        if (dateEnd(dateTimeDes!) == true) {
         cell.contentView.alpha = 0.75
             }
         else {
